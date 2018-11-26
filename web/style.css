@@ -1,0 +1,152 @@
+/* 
+    Created on : Nov 25, 2018, 4:32:36 PM
+    Author     : bojan
+*/
+
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    padding-top: 54px;
+    margin-bottom: 60px;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 35px;
+    padding-top: 7px;
+}
+
+.socials {
+    position:absolute;
+    right:0;
+    top:0;
+    margin-left:110px;
+    text-align:right;
+}
+
+.fa-star {
+    color: #ffc03a;
+}
+
+.stars:hover > i {
+   color: blue;
+   cursor: pointer;
+}
+
+.price_range {
+    float:right;
+    width: 3em;
+    max-width: 95%;
+}
+
+.price_label {
+    display: inline-block;
+    width:8em;
+}
+.stars {
+    box-sizing: border-box;
+    margin: 10px;
+}
+
+.options {
+    border-bottom: 1px solid black;
+}
+
+.label {
+    font-weight: bold;
+    font-size: 20pt;
+}
+
+.btn-show-rooms {
+    float: right;
+}
+
+.rating {
+    font-size: 18pt;
+}
+
+.card-text {
+    font-size: 15pt;
+}
+
+.prices {
+    font-size: 20px;
+}
+
+.custom-radio {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.custom-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.cities .checkmark {
+    position: absolute;
+    top: 6;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.custom-radio:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.custom-radio input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.custom-radio input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.custom-radio .checkmark:after {
+ 	top: 6px;
+	left: 6px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
