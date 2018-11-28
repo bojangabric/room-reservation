@@ -13,6 +13,11 @@ import java.io.Serializable;
  */
 public class Korisnik implements Serializable {
 
+    @Override
+    public String toString() {
+        return "Korisnik{" + "korisnikId=" + korisnikId + ", korisnickoIme=" + korisnickoIme + ", lozinka=" + lozinka + ", imePrezime=" + imePrezime + ", email=" + email + ", telefon=" + telefon + ", adresa=" + adresa + ", grad=" + grad + ", drzava=" + drzava + ", postanskiBroj=" + postanskiBroj + ", uloga=" + uloga + ", poeni=" + poeni + '}';
+    }
+
     private Integer korisnikId;
     private String korisnickoIme;
     private String lozinka;
@@ -24,6 +29,7 @@ public class Korisnik implements Serializable {
     private String drzava;
     private int postanskiBroj;
     private String uloga = "korisnik";
+    private int poeni = 0;
 
     public Korisnik() {
     }
@@ -132,5 +138,13 @@ public class Korisnik implements Serializable {
 
     public void setUloga(String uloga) {
         this.uloga = uloga;
+    }
+
+    public int getPoeni() {
+        return poeni;
+    }
+
+    public void setPoeni(int poeni) {
+        this.poeni = poeni;
     }
 }
