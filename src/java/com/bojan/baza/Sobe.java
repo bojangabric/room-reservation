@@ -47,4 +47,29 @@ public class Sobe {
         }
         return sobe;
     }
+
+    public static ArrayList<String> UzmiTipove(int hotel_id) {
+
+        Connection kon = ConnectionProvider.getCon();
+        ArrayList<String> tipovi = new ArrayList<>();
+
+        PreparedStatement ps;
+        try {
+
+            ps = kon.prepareStatement("SELECT tip FROM tipovi_soba t "
+                    + "JOIN sobe s on s.tip_id = t.tip_id "
+                    + "WHERE s.hotel_id = ?");
+
+            ps.setInt(1, hotel_id);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String tip = rs.getString("tip");
+                tipovi.add(tip);
+            }
+        } catch (SQLException ex) {
+        }
+
+        return tipovi;
+    }
 }

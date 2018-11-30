@@ -114,7 +114,7 @@ footer {
     border-radius: 50%;
 }
 
-.cities .checkmark {
+.cities .checkmark, .types .checkmark {
     position: absolute;
     top: 6;
     left: 0;

@@ -4,6 +4,7 @@
     Author     : bojan
 --%>
 
+<%@page import="com.bojan.baza.Sobe"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.bojan.models.Soba"%>
 <html>
@@ -44,29 +45,16 @@
             <div class="row">
                 <div class="col-lg-3 pt-4">
                     <form action="" method="get">
-                        <span class="label">Zvezdice</span>
+                        <span class="label">Tip sobe</span>
                         <div class="options pb-2 mt-2">
-                            <label class="custom-radio"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                    class="fa fa-star"></i><i class="fa fa-star"></i>
-                                <input type="radio" name="zvezdice" value="5">
-                                <span class="checkmark"></span>
-                            </label>
 
-                            <label class="custom-radio"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                    class="fa fa-star"></i>
-                                <input type="radio" name="zvezdice" value="4">
+                            <% ArrayList<String> tipovi_sobe = Sobe.UzmiTipove((Integer.parseInt(request.getParameter("hotel_id"))));
+                                for (String tip : tipovi_sobe) {%>
+                            <label class="custom-radio types"><%=tip%>
+                                <input type="radio" name="tip_sobe" value="<%=tip%>">
                                 <span class="checkmark"></span>
                             </label>
-
-                            <label class="custom-radio"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                <input type="radio" name="zvezdice" value="3">
-                                <span class="checkmark"></span>
-                            </label>
-
-                            <label class="custom-radio"><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                <input type="radio" name="zvezdice" value="2">
-                                <span class="checkmark"></span>
-                            </label>
+                            <% } %>
                         </div>
 
                         <span class="label">Cena</span>
@@ -75,29 +63,7 @@
                             <label class="price_label">Max cena: <input class="mb-3 price_range" name="max_price" type="number" step="50" min="0" max="500" value="500"></label><br>
                         </div>
 
-                        <span class="label">Lokacija</span>
 
-
-
-                        <div class="options cities">
-
-                            <label class="custom-radio">Beograd
-                                <input type="radio" name="grad" value="Beograd">
-                                <span class="checkmark"></span>
-                            </label>
-
-                            <label class="custom-radio">Novi Sad
-                                <input type="radio" name="grad" value="Novi Sad">
-                                <span class="checkmark"></span>
-                            </label>
-
-                            <label class="custom-radio">Nis
-                                <input type="radio" name="grad" value="Nis">
-                                <span class="checkmark"></span>
-                            </label>
-
-
-                        </div>
 
                         <button class="btn btn-primary mt-3" type="submit">Pretrazi</button>
                     </form>
@@ -105,8 +71,7 @@
 
 
                 <div class="col-lg-9">
-                    <%
-                        ArrayList<Soba> sobe = (ArrayList<Soba>) request.getAttribute("sobe");
+                    <%                        ArrayList<Soba> sobe = (ArrayList<Soba>) request.getAttribute("sobe");
                         for (Soba s : sobe) {%>
                     <div class="card mt-4">
                         <div class="row">
