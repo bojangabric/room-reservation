@@ -5,6 +5,7 @@
  */
 package com.bojan.auth;
 
+import com.bojan.models.Korisnik;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,17 +33,17 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        LoginBean user = new LoginBean();
+        Korisnik user = new Korisnik();
         user.setEmail(request.getParameter("email"));
         user.setLozinka(request.getParameter("lozinka"));
 
         String redirect = "login.jsp";
-        
+
         if (LoginDAO.validate(user)) {
-            request.getSession().setAttribute("loggedInUser", true); 
+            request.getSession().setAttribute("loggedInUser", user);
             redirect = "index.jsp";
         }
-        
+
         response.sendRedirect(redirect);
     }
 }

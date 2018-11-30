@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.bojan.auth;
+package com.bojan.models;
 
 import java.io.Serializable;
 
@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author bojan
  */
-public class Korisnik implements Serializable {
+public class Korisnik {
 
     @Override
     public String toString() {

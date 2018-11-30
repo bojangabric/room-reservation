@@ -5,7 +5,8 @@
  */
 package com.bojan.auth;
 
-import com.bojan.connection.ConnectionProvider;
+import com.bojan.models.Korisnik;
+import com.bojan.baza.ConnectionProvider;
 import java.sql.*;
 
 /**
@@ -14,7 +15,7 @@ import java.sql.*;
  */
 public class LoginDAO {
 
-    public static boolean validate(LoginBean user) {
+    public static boolean validate(Korisnik user) {
         boolean status = false;
         try {
             Connection kon = ConnectionProvider.getCon();
@@ -27,6 +28,17 @@ public class LoginDAO {
 
             ResultSet rs = ps.executeQuery();
             status = rs.next();
+
+            user.setKorisnikId(rs.getInt("korisnik_id"));
+            user.setKorisnickoIme(rs.getString("korisnicko_ime"));
+            user.setImePrezime(rs.getString("ime_prezime"));
+            user.setTelefon(rs.getString("telefon"));
+            user.setAdresa(rs.getString("adresa"));
+            user.setGrad(rs.getString("grad"));
+            user.setDrzava(rs.getString("drzava"));
+            user.setPostanskiBroj(rs.getInt("postanski_broj"));
+            user.setUloga(rs.getString("uloga"));
+            user.setPoeni(rs.getInt("poeni"));
 
         } catch (Exception e) {
         }

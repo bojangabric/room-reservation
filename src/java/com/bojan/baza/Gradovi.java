@@ -13,6 +13,7 @@ import java.util.*;
  * @author bojan
  */
 public class Gradovi {
+    
     public static List<String> UzmiGradove() {
 
         Connection kon = ConnectionProvider.getCon();

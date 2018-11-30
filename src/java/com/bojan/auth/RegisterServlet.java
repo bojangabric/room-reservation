@@ -5,7 +5,8 @@
  */
 package com.bojan.auth;
 
-import com.bojan.connection.ConnectionProvider;
+import com.bojan.models.Korisnik;
+import com.bojan.baza.ConnectionProvider;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
@@ -27,7 +28,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String redirect = "register.jsp";
         Connection kon = ConnectionProvider.getCon();
 
@@ -44,8 +45,8 @@ public class RegisterServlet extends HttpServlet {
 
         try {
             PreparedStatement ps = kon.prepareStatement(
-                    "INSERT INTO korisnici(korisnicko_ime, lozinka, ime_prezime, email, telefon, adresa, grad, drzava, postanski_broj, uloga)"
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?)");
+                    "INSERT INTO korisnici(korisnicko_ime, lozinka, ime_prezime, email, telefon, adresa, grad, drzava, postanski_broj, uloga, poeni)"
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 
             ps.setString(1, novi.getKorisnickoIme());
             ps.setString(2, novi.getLozinka());
@@ -57,10 +58,11 @@ public class RegisterServlet extends HttpServlet {
             ps.setString(8, novi.getDrzava());
             ps.setInt(9, novi.getPostanskiBroj());
             ps.setString(10, novi.getUloga());
+            ps.setInt(11, novi.getPoeni());
 
             ps.executeUpdate();
 
-            LoginBean user = new LoginBean();
+            Korisnik user = new Korisnik();
             user.setEmail(novi.getEmail());
             user.setLozinka(novi.getLozinka());
 

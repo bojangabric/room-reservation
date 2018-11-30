@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.bojan.auth;
+package com.bojan.sobe;
 
-import com.bojan.models.Korisnik;
+import com.bojan.baza.Sobe;
+import com.bojan.models.Soba;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author bojan
  */
-@WebServlet(name = "LogoutServlet", urlPatterns = {"/LogoutServlet"})
-public class LogoutServlet extends HttpServlet {
+@WebServlet(name = "SobeServlet", urlPatterns = {"/hoteli/*"})
+public class SobeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,11 +34,27 @@ public class LogoutServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if ((Korisnik)request.getSession().getAttribute("loggedInUser") != null) {
-            request.getSession().removeAttribute("loggedInUser");
-        }
+        ArrayList<Soba> sobe = Sobe.UzmiSobe((Integer.parseInt(request.getParameter("hotel_id"))));
+        request.setAttribute("sobe", sobe);
+//        request.getRequestDispatcher("/sobe.jsp").forward(request, response);
 
-        response.sendRedirect("index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/sobe.jsp");
+        dispatcher.forward(request, response);
+    }
+
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**
@@ -48,7 +66,7 @@ public class LogoutServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }

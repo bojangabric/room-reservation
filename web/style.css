@@ -41,8 +41,8 @@ footer {
 }
 
 .stars:hover > i {
-   color: blue;
-   cursor: pointer;
+    color: blue;
+    cursor: pointer;
 }
 
 .price_range {
@@ -82,7 +82,7 @@ footer {
 }
 
 .prices {
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .custom-radio {
@@ -143,10 +143,10 @@ footer {
 }
 
 .custom-radio .checkmark:after {
- 	top: 6px;
-	left: 6px;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background: white;
+    top: 6px;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
 }

@@ -37,6 +37,7 @@ public class Hoteli {
                 h.setOpis(rs.getString("opis"));
                 h.setZvezdice(rs.getInt("zvezdice"));
                 h.setSlika(rs.getString("slika"));
+
                 hoteli.add(h);
             }
 

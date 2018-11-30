@@ -16,19 +16,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/reservations.jsp">Rezervacije</a>
-                </li>
+                <c:if test="${not empty loggedInUser}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/reservations.jsp">Rezervacije</a>
+                    </li>
+                </c:if>
                 <li class="nav-item">
                     <a class="nav-link" href="/contact.jsp">Kontakt</a>
                 </li>
 
-                <c:if test="${not empty loggedInUser}">
-
-                </c:if>
-
                 <c:choose>
-                     <c:when test="${loggedInUser}">
+                    <c:when test="${loggedInUser != null}">
                         <li class="nav-item">
                             <a class="nav-link" href="/LogoutServlet">Izloguj se</a>
                         </li>
