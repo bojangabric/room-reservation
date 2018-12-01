@@ -67,7 +67,7 @@ public class RegisterServlet extends HttpServlet {
             user.setLozinka(novi.getLozinka());
 
             if (LoginDAO.validate(user)) {
-                request.getSession().setAttribute("loggedInUser", true);
+                request.getSession().setAttribute("loggedInUser", user);
                 redirect = "index.jsp";
             }
 

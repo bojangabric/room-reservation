@@ -15,10 +15,10 @@ import java.util.*;
  */
 public class Hoteli {
 
-    public static List<Hotel> UzmiHotele() {
+    public static ArrayList<Hotel> UzmiHotele() {
 
         Connection kon = ConnectionProvider.getCon();
-        List<Hotel> hoteli = new ArrayList<>();
+        ArrayList<Hotel> hoteli = new ArrayList<>();
 
         PreparedStatement ps;
         try {
@@ -40,7 +40,6 @@ public class Hoteli {
 
                 hoteli.add(h);
             }
-
         } catch (SQLException ex) {
         }
 

@@ -18,11 +18,11 @@
             <ul class="navbar-nav ml-auto">
                 <c:if test="${not empty loggedInUser}">
                     <li class="nav-item">
-                        <a class="nav-link" href="/reservations.jsp">Rezervacije</a>
+                        <a class="nav-link" href="/rezervacije">Rezervacije</a>
                     </li>
                 </c:if>
                 <li class="nav-item">
-                    <a class="nav-link" href="/contact.jsp">Kontakt</a>
+                    <a class="nav-link" href="/kontakt.jsp">Kontakt</a>
                 </li>
 
                 <c:choose>
@@ -33,7 +33,7 @@
                     </c:when>
                     <c:otherwise>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login.jsp">Ulogujte se</a>
+                            <a class="nav-link" href="/login.jsp">Uloguj se</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/register.jsp">Registracija</a>

@@ -71,7 +71,7 @@
 
 
                 <div class="col-lg-9">
-                    <%                        ArrayList<Soba> sobe = (ArrayList<Soba>) request.getAttribute("sobe");
+                    <%                        ArrayList<Soba> sobe = (ArrayList<Soba>)request.getAttribute("sobe");
                         for (Soba s : sobe) {%>
                     <div class="card mt-4">
                         <div class="row">
