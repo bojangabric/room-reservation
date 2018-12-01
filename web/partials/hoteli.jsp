@@ -4,13 +4,16 @@
     Author     : bojan
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.bojan.baza.Sobe"%>
 <%@page import="com.bojan.models.Hotel"%>
 <%@page import="com.bojan.baza.Hoteli"%>
 
 
 
 <div class="col-lg-9">
-    <% for (Hotel hotel : Hoteli.UzmiHotele()) {%>
+    <%
+        for (Hotel hotel : Hoteli.UzmiHotele()) {%>
     <div class="card mt-4">
         <div class="row">
             <div class="col-lg-4">
@@ -24,13 +27,15 @@
                     <p class="rating">
                         <% for (int i = 0; i < hotel.getZvezdice(); i++) { %>
                         <i class="fa fa-star"></i>
-                        <% } %>
+                        <% }%>
                     </p>
-                    <form action="hoteli/<%= hotel.getHotel_id() %>" method="post">
-                        <span class="prices"><strong>150$ - 200$</strong></span>
-                        <input hidden type="text" name="hotel_id" value="<%= hotel.getHotel_id() %>">
+
+                    <form action="hoteli/<%= hotel.getHotel_id()%>" method="post">
+                        <span class="prices"><strong><%= Sobe.UzmiNajmanjuCenu(hotel.getHotel_id())%>$ - <%= Sobe.UzmiNajvecuCenu(hotel.getHotel_id())%>$</strong></span>
+                        <input hidden type="text" name="hotel_id" value="<%= hotel.getHotel_id()%>">
                         <button type="submit" class="btn btn-primary btn-show-rooms">Prikazi sobe</button>
                     </form>
+
                 </div>
             </div>
         </div>
