@@ -8,6 +8,7 @@ package com.bojan.auth;
 import com.bojan.models.Korisnik;
 import com.bojan.baza.ConnectionProvider;
 import java.sql.*;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -44,6 +45,9 @@ public class LoginDAO {
         }
 
         return status;
-
+    }
+    
+    public static Korisnik loggedIn(HttpServletRequest request) {
+        return (Korisnik)request.getSession().getAttribute("loggedInUser");
     }
 }
