@@ -72,4 +72,16 @@ public class Sobe {
 
         return tipovi;
     }
+
+    public static int UzmiNajmanjuCenu(int hotel_id) {
+        Comparator<Soba> comp = Comparator.comparing(Soba::getCena);
+
+        return Collections.min(Sobe.UzmiSobe(hotel_id), comp).getCena();
+    }
+
+    public static int UzmiNajvecuCenu(int hotel_id) {
+        Comparator<Soba> comp = Comparator.comparing(Soba::getCena);
+
+        return Collections.max(Sobe.UzmiSobe(hotel_id), comp).getCena();
+    }
 }
