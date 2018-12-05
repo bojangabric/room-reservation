@@ -9,7 +9,7 @@
 
 <t:genericpage>
     <jsp:attribute name="title">
-        Hoteli - Login
+         Login - Hoteli
     </jsp:attribute>
 
     <jsp:body>
@@ -20,7 +20,7 @@
                         <div class="card-header">Login</div>
 
                         <div class="card-body">
-                            <form method="POST" action="LoginServlet" aria-label="Login">
+                            <form method="POST" action="/login" aria-label="Login">
 
                                 <div class="form-group row">
                                     <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Adresa</label>

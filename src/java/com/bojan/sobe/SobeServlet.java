@@ -23,62 +23,35 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "SobeServlet", urlPatterns = {"/hoteli/*"})
 public class SobeServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<Soba> sobe = Sobe.UzmiSobe((Integer.parseInt(request.getParameter("hotel_id"))));
-        request.setAttribute("sobe", sobe);
-//        request.getRequestDispatcher("/sobe.jsp").forward(request, response);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/sobe.jsp");
-        dispatcher.forward(request, response);
+        int min_cena = 0;
+        int max_cena = 500;
+        if (request.getParameter("min_cena") != null) {
+            min_cena = Integer.parseInt(request.getParameter("min_cena"));
+        }
+        if (request.getParameter("max_cena") != null) {
+            max_cena = Integer.parseInt(request.getParameter("max_cena"));
+        }
+
+        int hotel_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
+
+        ArrayList<Soba> sobe = Sobe.UzmiSobe(hotel_id, min_cena, max_cena);
+        request.setAttribute("sobe", sobe);
+        request.setAttribute("hotel_id", hotel_id);
+        request.getRequestDispatcher("/sobe.jsp").forward(request, response);
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }

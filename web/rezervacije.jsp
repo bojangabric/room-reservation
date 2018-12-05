@@ -16,7 +16,7 @@
 
 <t:genericpage>
     <jsp:attribute name="title">
-        Hoteli
+        Rezervacije - Hoteli
     </jsp:attribute>
 
     <jsp:body>

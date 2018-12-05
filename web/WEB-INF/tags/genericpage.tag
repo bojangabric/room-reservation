@@ -15,15 +15,15 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="style.css" rel="stylesheet" >
+        <link rel="stylesheet" href="/css/style.css" >
     </head>
     <body>
 
-        <jsp:include page="partials/header.jsp"></jsp:include>
+        <jsp:include page="/partials/header.jsp"></jsp:include>
 
         <jsp:doBody/>
 
-        <jsp:include page="partials/footer.jsp"></jsp:include>
+        <jsp:include page="/partials/footer.jsp"></jsp:include>
 
     </body>
 </html>

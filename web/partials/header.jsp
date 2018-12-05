@@ -28,15 +28,15 @@
                 <c:choose>
                     <c:when test="${loggedInUser != null}">
                         <li class="nav-item">
-                            <a class="nav-link" href="/LogoutServlet">Izloguj se</a>
+                            <a class="nav-link" href="/logout">Izloguj se</a>
                         </li>
                     </c:when>
                     <c:otherwise>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login.jsp">Uloguj se</a>
+                            <a class="nav-link" href="/login">Uloguj se</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/register.jsp">Registracija</a>
+                            <a class="nav-link" href="/register">Registracija</a>
                         </li>
                     </c:otherwise>   
                 </c:choose>                    

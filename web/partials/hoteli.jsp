@@ -17,7 +17,7 @@
     <div class="card mt-4">
         <div class="row">
             <div class="col-lg-4">
-                <img src="slike/<%= hotel.getSlika()%>"
+                <img src="/slike/<%= hotel.getSlika()%>"
                      class="w-100">
             </div>
             <div class="col-lg-8 px-3">
@@ -30,9 +30,8 @@
                         <% }%>
                     </p>
 
-                    <form action="hoteli/<%= hotel.getHotel_id()%>" method="post">
+                    <form action="hoteli/<%= hotel.getHotel_id()%>">
                         <span class="prices"><strong><%= Sobe.UzmiNajmanjuCenu(hotel.getHotel_id())%>$ - <%= Sobe.UzmiNajvecuCenu(hotel.getHotel_id())%>$</strong></span>
-                        <input hidden type="text" name="hotel_id" value="<%= hotel.getHotel_id()%>">
                         <button type="submit" class="btn btn-primary btn-show-rooms">Prikazi sobe</button>
                     </form>
 
