@@ -1,25 +1,16 @@
-<%-- 
-    Document   : rezervacije
-    Created on : Dec 1, 2018, 1:32:14 PM
-    Author     : bojan
---%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- 
-    Document   : Test
-    Created on : Nov 25, 2018, 4:06:13 PM
-    Author     : bojan
---%>
+<html>
+    <head>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+        <title>Rezervacije - Hoteli</title>
+        <%@ include file="partials/metadata.jsp" %>
 
-<t:genericpage>
-    <jsp:attribute name="title">
-        Rezervacije - Hoteli
-    </jsp:attribute>
+    </head>
+    <body>
 
-    <jsp:body>
+        <%@include file="partials/header.jsp" %>
+
         <div class="container">
             <div class="flex-row">
                 <div class="pt-4">
@@ -45,7 +36,7 @@
                                 <td class="align-middle">${rezervacija.getPoeni()}</td>
                                 <td alig="center">
                                     <a href="/OtkaziRezervacijuServlet/${rezervacija.getRezervacija_id()}">
-                                       <button class="btn btn-danger btn-sm">Otkazi</button>
+                                        <button class="btn btn-danger btn-sm">Otkazi</button>
                                     </a>
                                 </td>
                             </tr>
@@ -54,6 +45,8 @@
                 </div>
             </div>
         </div>
-    </jsp:body>
 
-</t:genericpage>    
+        <%@include file="partials/footer.jsp" %>
+
+    </body>
+</html>

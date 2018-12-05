@@ -1,19 +1,16 @@
-<%-- 
-    Document   : kontakt
-    Created on : Dec 1, 2018, 5:20:33 PM
-    Author     : bojan
---%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%@page import="com.bojan.models.Korisnik"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<html>
+    <head>
 
-<t:genericpage>
-    <jsp:attribute name="title">
-        Kontakt - Hoteli
-    </jsp:attribute>
+        <title>Kontakt - Hoteli</title>
+        <%@ include file="partials/metadata.jsp" %>
 
-    <jsp:body>
+    </head>
+    <body>
+
+        <%@include file="partials/header.jsp" %>
+
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 mt-3">
@@ -67,6 +64,8 @@
                 </div>
             </div>
         </div>
-    </jsp:body>
 
-</t:genericpage>    
+        <%@include file="partials/footer.jsp" %>
+
+    </body>
+</html>

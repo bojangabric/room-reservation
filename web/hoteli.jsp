@@ -1,20 +1,17 @@
-<%-- 
-    Document   : Test
-    Created on : Nov 25, 2018, 4:06:13 PM
-    Author     : bojan
---%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%@page import="com.bojan.models.Korisnik"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<html>
+    <head>
 
-<t:genericpage>
-    <jsp:attribute name="title">
-        Hoteli
-    </jsp:attribute>
+        <title>Hoteli</title>
+        <%@ include file="partials/metadata.jsp" %>
 
-    <jsp:body>
-        <div class="container">
+    </head>
+    <body>
+
+        <%@include file="partials/header.jsp" %>
+
+        <div class = "container">
             <div class="row">
                 <div class="col-lg-3 pt-4">
                     <form action="" method="get">
@@ -43,13 +40,8 @@
                             </label>
                         </div>
 
-                        <span class="label">Cena</span>
-                        <div class="options mt-2 prices">
-                            <label class="price_label">Min cena: <input class="mb-2 price_range" name="min_cena" type="number" step="50" min="0" max="500" value="0"></label><br>
-                            <label class="price_label">Max cena: <input class="mb-3 price_range" name="max_cena" type="number" step="50" min="0" max="500" value="500"></label><br>
-                        </div>
-
                         <span class="label">Lokacija</span>
+
                         <%@include file="partials/gradovi.jsp" %>
 
                         <button class="btn btn-primary mt-3" type="submit">Pretrazi</button>
@@ -60,6 +52,8 @@
 
             </div>
         </div>
-    </jsp:body>
 
-</t:genericpage>    
+        <%@include file="partials/footer.jsp" %>
+
+    </body>
+</html>

@@ -28,13 +28,13 @@ public class LoginServlet extends HttpServlet {
         Korisnik user = new Korisnik();
         user.setEmail(request.getParameter("email"));
         user.setLozinka(request.getParameter("lozinka"));
-        String redirect = "login.jsp";
+        String redirect = "/login";
 
         if (LoginDAO.validate(user)) {
             request.getSession().setAttribute("loggedInUser", user);
-            redirect = "hoteli.jsp";
+            redirect = "/hoteli";
         }
-        request.getRequestDispatcher(redirect).forward(request, response);
+        response.sendRedirect(redirect);
     }
 
     @Override

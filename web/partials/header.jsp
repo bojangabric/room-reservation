@@ -1,9 +1,3 @@
-<%-- 
-    Document   : header
-    Created on : Nov 25, 2018, 4:52:36 PM
-    Author     : bojan
---%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 
@@ -16,21 +10,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                
                 <c:if test="${not empty loggedInUser}">
+                    <span class="nav-link"><c:out value="Poeni: ${sessionScope.loggedInUser.getPoeni()}" /></span>
                     <li class="nav-item">
                         <a class="nav-link" href="/rezervacije">Rezervacije</a>
                     </li>
                 </c:if>
+                    
                 <li class="nav-item">
                     <a class="nav-link" href="/kontakt.jsp">Kontakt</a>
                 </li>
 
                 <c:choose>
-                    <c:when test="${loggedInUser != null}">
+                    <c:when test="${not empty loggedInUser}">
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Izloguj se</a>
                         </li>
                     </c:when>
+                        
                     <c:otherwise>
                         <li class="nav-item">
                             <a class="nav-link" href="/login">Uloguj se</a>
@@ -39,7 +37,8 @@
                             <a class="nav-link" href="/register">Registracija</a>
                         </li>
                     </c:otherwise>   
-                </c:choose>                    
+                </c:choose>   
+                        
             </ul>
         </div>
     </div>

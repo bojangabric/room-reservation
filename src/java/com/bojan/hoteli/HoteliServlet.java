@@ -1,12 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.bojan.hoteli;
 
+import com.bojan.baza.Hoteli;
+import com.bojan.models.Hotel;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,32 +18,31 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "HoteliServlet", urlPatterns = {"/hoteli"})
 public class HoteliServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("hoteli.jsp").forward(request, response);
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+    /*      
+        Comparator<Soba> comp = Comparator.comparing(Soba::getCena);
+        return Collections.min(Sobe.UzmiSobe(hotel_id), comp).getCena();
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String query = "SELECT * FROM hoteli ";
+
+        int zvezdice = (request.getParameter("zvezdice") != null) ? Integer.parseInt(request.getParameter("zvezdice")) : 0;
+        String grad = (request.getParameter("grad") != null) ? request.getParameter("grad") : "";
+
+        if (!grad.equals("")) {
+            query += "WHERE grad = \"" + grad + "\" ";
+        }
+
+        if (zvezdice != 0 && !grad.equals("")) {
+            query += "AND zvezdice = " + zvezdice;
+        } else if (zvezdice != 0) {
+            query += "WHERE zvezdice = " + zvezdice;
+        }
+
+        ArrayList<Hotel> hoteli = Hoteli.UzmiHotele(query);      
+        
+        request.setAttribute("hoteli", hoteli);
+        request.getRequestDispatcher("hoteli.jsp").forward(request, response);
     }
 }

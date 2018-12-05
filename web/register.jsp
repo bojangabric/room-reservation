@@ -1,18 +1,16 @@
-<%-- 
-    Document   : register
-    Created on : Nov 26, 2018, 2:23:21 AM
-    Author     : bojan
---%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<html>
+    <head>
 
-<t:genericpage>
-    <jsp:attribute name="title">
-        Register - Hoteli
-    </jsp:attribute>
+        <title>Register - Hoteli</title>
+        <%@ include file="partials/metadata.jsp" %>
 
-    <jsp:body>
+    </head>
+    <body>
+
+        <%@include file="partials/header.jsp" %>
+
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 pt-4">
@@ -30,7 +28,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">Lozinka</label>
+                                    <label for="Lozinka" class="col-md-4 col-form-label text-md-right">Lozinka</label>
                                     <div class="col-md-6">
                                         <input id="lozinka" type="password" class="form-control" name="lozinka" required>
                                     </div>
@@ -98,6 +96,8 @@
                 </div>
             </div>
         </div>
-    </jsp:body>
 
-</t:genericpage>   
+        <%@include file="partials/footer.jsp" %>
+
+    </body>
+</html>

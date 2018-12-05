@@ -1,10 +1,3 @@
-<%-- 
-    Document   : footer
-    Created on : Nov 25, 2018, 4:51:43 PM
-    Author     : bojan
---%>
-
-
 <%@page import="java.util.Calendar"%>
 
 <footer class="bg-dark">

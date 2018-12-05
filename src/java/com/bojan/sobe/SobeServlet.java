@@ -37,9 +37,9 @@ public class SobeServlet extends HttpServlet {
 
         int hotel_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
 
-        ArrayList<Soba> sobe = Sobe.UzmiSobe(hotel_id, min_cena, max_cena);
-        request.setAttribute("sobe", sobe);
+        request.setAttribute("sobe", Sobe.UzmiSobe(hotel_id, min_cena, max_cena));
         request.setAttribute("hotel_id", hotel_id);
+        request.setAttribute("tipovi", Sobe.UzmiTipove(hotel_id));
         request.getRequestDispatcher("/sobe.jsp").forward(request, response);
     }
 

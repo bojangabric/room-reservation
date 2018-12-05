@@ -19,6 +19,24 @@ public class Hotel {
     private String opis;
     private int zvezdice;
     private String slika;
+    private int min_cena_sobe;
+    private int max_cena_sobe;
+
+    public int getMin_cena_sobe() {
+        return min_cena_sobe;
+    }
+
+    public void setMin_cena_sobe(int min_cena_sobe) {
+        this.min_cena_sobe = min_cena_sobe;
+    }
+
+    public int getMax_cena_sobe() {
+        return max_cena_sobe;
+    }
+
+    public void setMax_cena_sobe(int max_cena_sobe) {
+        this.max_cena_sobe = max_cena_sobe;
+    }
 
     public String getSlika() {
         return slika;
