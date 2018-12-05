@@ -18,17 +18,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author bojan
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
+@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -36,14 +28,19 @@ public class LoginServlet extends HttpServlet {
         Korisnik user = new Korisnik();
         user.setEmail(request.getParameter("email"));
         user.setLozinka(request.getParameter("lozinka"));
-
         String redirect = "login.jsp";
 
         if (LoginDAO.validate(user)) {
             request.getSession().setAttribute("loggedInUser", user);
-            redirect = "index.jsp";
+            redirect = "hoteli.jsp";
         }
+        request.getRequestDispatcher(redirect).forward(request, response);
+    }
 
-        response.sendRedirect(redirect);
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 }

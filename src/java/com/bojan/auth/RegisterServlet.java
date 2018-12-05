@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author bojan
  */
-@WebServlet(name = "RegisterServlet", urlPatterns = {"/RegisterServlet"})
+@WebServlet(name = "RegisterServlet", urlPatterns = {"/register"})
 public class RegisterServlet extends HttpServlet {
 
     @Override
@@ -68,7 +68,7 @@ public class RegisterServlet extends HttpServlet {
 
             if (LoginDAO.validate(user)) {
                 request.getSession().setAttribute("loggedInUser", user);
-                redirect = "index.jsp";
+                redirect = "hoteli.jsp";
             }
 
         } catch (SQLException ex) {
@@ -76,6 +76,12 @@ public class RegisterServlet extends HttpServlet {
         }
 
         response.sendRedirect(redirect);
+    }
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        request.getRequestDispatcher("register.jsp").forward(request, response);
     }
 }
