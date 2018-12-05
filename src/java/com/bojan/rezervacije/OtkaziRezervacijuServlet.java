@@ -43,8 +43,9 @@ public class OtkaziRezervacijuServlet extends HttpServlet {
             int rezervacija_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
             try {
 
-                PreparedStatement ps = kon.prepareStatement("DELETE FROM rezervacije WHERE rezervacija_id = ?");
+                PreparedStatement ps = kon.prepareStatement("DELETE FROM rezervacije WHERE rezervacija_id = ? AND korisnik_id = ?");
                 ps.setInt(1, rezervacija_id);
+                ps.setInt(2, korisnik.getKorisnikId());
                 ps.executeUpdate();
 
             } catch (SQLException ex) {
