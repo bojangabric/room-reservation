@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2018 at 11:55 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.12
+-- Generation Time: Dec 09, 2018 at 08:40 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -74,8 +74,24 @@ CREATE TABLE `korisnici` (
 --
 
 INSERT INTO `korisnici` (`korisnik_id`, `korisnicko_ime`, `lozinka`, `ime_prezime`, `email`, `telefon`, `adresa`, `grad`, `drzava`, `postanski_broj`, `uloga`, `poeni`) VALUES
-(1, 'korisnickoime', 'lozinka', 'imeprezime', 'email@gmail.com', '04302302', 'Adresa', 'Grad', 'Drzava', 11077, 'korisnik', 0),
+(1, 'korisnickoime', 'lozinka', 'imeprezime', 'email@gmail.com', '04302302', 'Adresa', 'Grad', 'Drzava', 11077, 'korisnik', 100),
 (4, 'imeee', 'lozinka', 'imeeee', 'tixizako@sandcars.net', '0123212', 'Adresa', 'Grad', 'Drzav', 10101, 'korisnik', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rezervacije`
+--
+
+CREATE TABLE `rezervacije` (
+  `rezervacija_id` int(5) NOT NULL,
+  `korisnik_id` int(5) NOT NULL,
+  `soba_id` int(5) NOT NULL,
+  `datum_dolaska` date NOT NULL,
+  `datum_odlaska` date NOT NULL,
+  `novac` int(5) NOT NULL,
+  `poeni` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -88,6 +104,7 @@ CREATE TABLE `sobe` (
   `hotel_id` int(5) NOT NULL,
   `tip_id` int(5) NOT NULL,
   `cena` int(5) NOT NULL,
+  `poeni` int(5) NOT NULL,
   `slika` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -95,10 +112,11 @@ CREATE TABLE `sobe` (
 -- Dumping data for table `sobe`
 --
 
-INSERT INTO `sobe` (`soba_id`, `hotel_id`, `tip_id`, `cena`, `slika`) VALUES
-(1, 1, 4, 100, 'apartman.jpg'),
-(2, 3, 2, 50, 'standard.jpg'),
-(3, 2, 3, 33, 'komfort.jpg');
+INSERT INTO `sobe` (`soba_id`, `hotel_id`, `tip_id`, `cena`, `poeni`, `slika`) VALUES
+(1, 1, 4, 100, 0, 'apartman.jpg'),
+(2, 3, 2, 50, 0, 'standard.jpg'),
+(3, 2, 3, 33, 0, 'komfort.jpg'),
+(4, 1, 5, 150, 0, 'cetvorokrevetna.jpg');
 
 -- --------------------------------------------------------
 
@@ -142,6 +160,14 @@ ALTER TABLE `korisnici`
   ADD UNIQUE KEY `telefon` (`telefon`);
 
 --
+-- Indexes for table `rezervacije`
+--
+ALTER TABLE `rezervacije`
+  ADD PRIMARY KEY (`rezervacija_id`),
+  ADD KEY `korisnik_id` (`korisnik_id`),
+  ADD KEY `soba_id` (`soba_id`);
+
+--
 -- Indexes for table `sobe`
 --
 ALTER TABLE `sobe`
@@ -172,10 +198,16 @@ ALTER TABLE `korisnici`
   MODIFY `korisnik_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `rezervacije`
+--
+ALTER TABLE `rezervacije`
+  MODIFY `rezervacija_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `sobe`
 --
 ALTER TABLE `sobe`
-  MODIFY `soba_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `soba_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tipovi_soba`
@@ -186,6 +218,13 @@ ALTER TABLE `tipovi_soba`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `rezervacije`
+--
+ALTER TABLE `rezervacije`
+  ADD CONSTRAINT `rezervacije_ibfk_1` FOREIGN KEY (`korisnik_id`) REFERENCES `korisnici` (`korisnik_id`),
+  ADD CONSTRAINT `rezervacije_ibfk_2` FOREIGN KEY (`soba_id`) REFERENCES `sobe` (`soba_id`);
 
 --
 -- Constraints for table `sobe`
