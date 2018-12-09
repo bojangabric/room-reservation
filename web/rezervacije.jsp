@@ -42,6 +42,11 @@
                             </tr>
                         </c:forEach>
                     </table>
+                    <c:if test="${empty rezervacije}">
+                        <tr>
+                            <td>Nemate nijednu rezervaciju</td>
+                        </tr>
+                    </c:if>
                 </div>
             </div>
         </div>
