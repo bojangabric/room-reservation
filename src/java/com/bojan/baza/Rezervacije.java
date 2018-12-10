@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.bojan.baza;
 
 import com.bojan.models.Rezervacija;
 import java.sql.*;
 import java.util.ArrayList;
 
-/**
- *
- * @author bojan
- */
 public class Rezervacije {
 
     public static ArrayList<Rezervacija> UzmiRezervacije(int korisnik_id) {

@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.bojan.models;
 
-/**
- *
- * @author bojan
- */
 public class Hotel {
 
     private int hotel_id;
@@ -101,5 +92,4 @@ public class Hotel {
     public void setZvezdice(int zvezdice) {
         this.zvezdice = zvezdice;
     }
-
 }

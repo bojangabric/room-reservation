@@ -3,20 +3,13 @@ package com.bojan.auth;
 import com.bojan.models.Korisnik;
 import com.bojan.baza.ConnectionProvider;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author bojan
- */
 @WebServlet(name = "RegisterServlet", urlPatterns = {"/register"})
 public class RegisterServlet extends HttpServlet {
 
@@ -67,7 +60,6 @@ public class RegisterServlet extends HttpServlet {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         response.sendRedirect(redirect);

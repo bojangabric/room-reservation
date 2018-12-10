@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.bojan.baza;
 
 import com.bojan.models.Soba;
 import java.sql.*;
 import java.util.*;
 
-/**
- *
- * @author bojan
- */
 public class Sobe {
 
     public static ArrayList<Soba> UzmiSobe(int hotel_id) {
@@ -110,14 +101,14 @@ public class Sobe {
     }
 
     public static int UzmiNajmanjuCenu(int hotel_id) {
+        
         Comparator<Soba> comp = Comparator.comparing(Soba::getCena);
-
         return Collections.min(Sobe.UzmiSobe(hotel_id), comp).getCena();
     }
 
     public static int UzmiNajvecuCenu(int hotel_id) {
+        
         Comparator<Soba> comp = Comparator.comparing(Soba::getCena);
-
         return Collections.max(Sobe.UzmiSobe(hotel_id), comp).getCena();
     }
 }

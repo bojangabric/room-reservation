@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.bojan.auth;
 
 import com.bojan.models.Korisnik;
@@ -10,10 +5,6 @@ import com.bojan.baza.ConnectionProvider;
 import java.sql.*;
 import javax.servlet.http.HttpServletRequest;
 
-/**
- *
- * @author bojan
- */
 public class LoginDAO {
 
     public static boolean validate(Korisnik user) {
@@ -46,8 +37,8 @@ public class LoginDAO {
 
         return status;
     }
-    
+
     public static Korisnik loggedIn(HttpServletRequest request) {
-        return (Korisnik)request.getSession().getAttribute("loggedInUser");
+        return (Korisnik) request.getSession().getAttribute("loggedInUser");
     }
 }
