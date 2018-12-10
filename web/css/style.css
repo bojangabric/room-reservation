@@ -7,6 +7,7 @@ html {
 body {
     padding-top: 54px;
     margin-bottom: 60px;
+    background: url("../slike/stone.jpg");
 }
 
 @media (min-width: 992px) {
@@ -105,8 +106,9 @@ footer {
     left: 0;
     height: 20px;
     width: 20px;
-    background-color: #eee;
+    background-color: #eee;   
     border-radius: 50%;
+    border: 1px solid grey;
 }
 
 .cities .checkmark, .types .checkmark {
@@ -117,6 +119,7 @@ footer {
     width: 20px;
     background-color: #eee;
     border-radius: 50%;
+    border: 1px solid grey;
 }
 
 .custom-radio:hover input ~ .checkmark {
@@ -138,8 +141,8 @@ footer {
 }
 
 .custom-radio .checkmark:after {
-    top: 6px;
-    left: 6px;
+    top: 5px;
+    left: 5px;
     width: 8px;
     height: 8px;
     border-radius: 50%;
