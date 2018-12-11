@@ -21,30 +21,30 @@ public class RegisterServlet extends HttpServlet {
         Connection kon = ConnectionProvider.getCon();
 
         Korisnik novi = new Korisnik();
-        novi.setKorisnickoIme(request.getParameter("korisnicko_ime"));
+        novi.setKorisnicko_ime(request.getParameter("korisnicko_ime"));
         novi.setLozinka(request.getParameter("lozinka"));
-        novi.setImePrezime(request.getParameter("ime_prezime"));
+        novi.setIme_prezime(request.getParameter("ime_prezime"));
         novi.setEmail(request.getParameter("email"));
         novi.setTelefon(request.getParameter("telefon"));
         novi.setAdresa(request.getParameter("adresa"));
         novi.setGrad(request.getParameter("grad"));
         novi.setDrzava(request.getParameter("drzava"));
-        novi.setPostanskiBroj(Integer.parseInt(request.getParameter("postanski_broj")));
+        novi.setPostanski_broj(Integer.parseInt(request.getParameter("postanski_broj")));
 
         try {
             PreparedStatement ps = kon.prepareStatement(
                     "INSERT INTO korisnici(korisnicko_ime, lozinka, ime_prezime, email, telefon, adresa, grad, drzava, postanski_broj, uloga, poeni)"
                     + "VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 
-            ps.setString(1, novi.getKorisnickoIme());
+            ps.setString(1, novi.getKorisnicko_ime());
             ps.setString(2, novi.getLozinka());
-            ps.setString(3, novi.getImePrezime());
+            ps.setString(3, novi.getIme_prezime());
             ps.setString(4, novi.getEmail());
             ps.setString(5, novi.getTelefon());
             ps.setString(6, novi.getAdresa());
             ps.setString(7, novi.getGrad());
             ps.setString(8, novi.getDrzava());
-            ps.setInt(9, novi.getPostanskiBroj());
+            ps.setInt(9, novi.getPostanski_broj());
             ps.setString(10, novi.getUloga());
             ps.setInt(11, novi.getPoeni());
 
@@ -56,7 +56,7 @@ public class RegisterServlet extends HttpServlet {
 
             if (LoginDAO.validate(user)) {
                 request.getSession().setAttribute("loggedInUser", user);
-                redirect = "hoteli.jsp";
+                redirect = "/";
             }
 
         } catch (SQLException ex) {

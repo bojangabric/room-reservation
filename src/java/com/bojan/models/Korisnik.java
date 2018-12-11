@@ -2,21 +2,16 @@ package com.bojan.models;
 
 public class Korisnik {
 
-    @Override
-    public String toString() {
-        return "Korisnik{" + "korisnikId=" + korisnikId + ", korisnickoIme=" + korisnickoIme + ", lozinka=" + lozinka + ", imePrezime=" + imePrezime + ", email=" + email + ", telefon=" + telefon + ", adresa=" + adresa + ", grad=" + grad + ", drzava=" + drzava + ", postanskiBroj=" + postanskiBroj + ", uloga=" + uloga + ", poeni=" + poeni + '}';
-    }
-
-    private Integer korisnikId;
-    private String korisnickoIme;
+    private Integer korisnik_id;
+    private String korisnicko_ime;
     private String lozinka;
-    private String imePrezime;
+    private String ime_prezime;
     private String email;
     private String telefon;
     private String adresa;
     private String grad;
     private String drzava;
-    private int postanskiBroj;
+    private int postanski_broj;
     private String uloga = "korisnik";
     private int poeni = 0;
 
@@ -24,37 +19,37 @@ public class Korisnik {
     }
 
     public Korisnik(Integer korisnikId) {
-        this.korisnikId = korisnikId;
+        this.korisnik_id = korisnikId;
     }
 
     public Korisnik(Integer korisnikId, String korisnickoIme, String lozinka, String imePrezime, String email, String telefon, String adresa, String grad, String drzava, int postanskiBroj, String uloga) {
-        this.korisnikId = korisnikId;
-        this.korisnickoIme = korisnickoIme;
+        this.korisnik_id = korisnikId;
+        this.korisnicko_ime = korisnickoIme;
         this.lozinka = lozinka;
-        this.imePrezime = imePrezime;
+        this.ime_prezime = imePrezime;
         this.email = email;
         this.telefon = telefon;
         this.adresa = adresa;
         this.grad = grad;
         this.drzava = drzava;
-        this.postanskiBroj = postanskiBroj;
+        this.postanski_broj = postanskiBroj;
         this.uloga = uloga;
     }
 
-    public Integer getKorisnikId() {
-        return korisnikId;
+    public Integer getKorisnik_id() {
+        return korisnik_id;
     }
 
-    public void setKorisnikId(Integer korisnikId) {
-        this.korisnikId = korisnikId;
+    public void setKorisnik_id(Integer korisnik_id) {
+        this.korisnik_id = korisnik_id;
     }
 
-    public String getKorisnickoIme() {
-        return korisnickoIme;
+    public String getKorisnicko_ime() {
+        return korisnicko_ime;
     }
 
-    public void setKorisnickoIme(String korisnickoIme) {
-        this.korisnickoIme = korisnickoIme;
+    public void setKorisnicko_ime(String korisnicko_ime) {
+        this.korisnicko_ime = korisnicko_ime;
     }
 
     public String getLozinka() {
@@ -65,12 +60,12 @@ public class Korisnik {
         this.lozinka = lozinka;
     }
 
-    public String getImePrezime() {
-        return imePrezime;
+    public String getIme_prezime() {
+        return ime_prezime;
     }
 
-    public void setImePrezime(String imePrezime) {
-        this.imePrezime = imePrezime;
+    public void setIme_prezime(String ime_prezime) {
+        this.ime_prezime = ime_prezime;
     }
 
     public String getEmail() {
@@ -113,12 +108,12 @@ public class Korisnik {
         this.drzava = drzava;
     }
 
-    public int getPostanskiBroj() {
-        return postanskiBroj;
+    public int getPostanski_broj() {
+        return postanski_broj;
     }
 
-    public void setPostanskiBroj(int postanskiBroj) {
-        this.postanskiBroj = postanskiBroj;
+    public void setPostanski_broj(int postanski_broj) {
+        this.postanski_broj = postanski_broj;
     }
 
     public String getUloga() {

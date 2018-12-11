@@ -8,7 +8,7 @@ public class Gradovi {
     public static List<String> UzmiGradove() {
 
         Connection kon = ConnectionProvider.getCon();
-        List<String> gradovi = new ArrayList<>();
+        ArrayList<String> gradovi = new ArrayList<>();
 
         PreparedStatement ps;
         try {

@@ -23,7 +23,7 @@ public class RezervacijeServlet extends HttpServlet {
 
         Korisnik korisnik = LoginDAO.loggedIn(request);
         if (korisnik != null) {
-            request.getSession().setAttribute("rezervacije", Rezervacije.UzmiRezervacije(korisnik.getKorisnikId()));
+            request.getSession().setAttribute("rezervacije", Rezervacije.UzmiRezervacije(korisnik.getKorisnik_id()));
         }
 
         request.getRequestDispatcher("rezervacije.jsp").forward(request, response);
@@ -34,6 +34,7 @@ public class RezervacijeServlet extends HttpServlet {
             throws ServletException, IOException {
 
         Korisnik k = (Korisnik) request.getSession().getAttribute("loggedInUser");
+        
         SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
 
         Connection kon = ConnectionProvider.getCon();
@@ -41,7 +42,7 @@ public class RezervacijeServlet extends HttpServlet {
 
         try {
             ps = kon.prepareStatement("INSERT INTO rezervacije(korisnik_id, soba_id, datum_dolaska, datum_odlaska, novac, poeni) VALUES(?, ?, ?, ?, ?, ?)");
-            ps.setInt(1, k.getKorisnikId());
+            ps.setInt(1, k.getKorisnik_id());
             ps.setInt(2, Integer.parseInt(request.getParameter("soba_id_modal")));
 
             java.util.Date d = f.parse(request.getParameter("datum_dolaska_modal"));
@@ -64,6 +65,6 @@ public class RezervacijeServlet extends HttpServlet {
         } catch (SQLException | ParseException ex) {
         }
 
-        request.getRequestDispatcher("/hoteli/1").forward(request, response);
+        response.sendRedirect(request.getRequestURI());
     }
 }
