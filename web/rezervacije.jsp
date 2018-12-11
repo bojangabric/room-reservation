@@ -14,7 +14,7 @@
         <div class="container">
             <div class="flex-row">
                 <div class="pt-4">
-                    <table class="table" align="center">
+                    <table class="table table-bordered table-hover" align="center">
                         <thead>
                         <th>Rezervacija ID</th>
                         <th>Korisnik ID</th> 
@@ -23,7 +23,6 @@
                         <th>Datum odlaska</th>
                         <th>Novac</th>
                         <th>Poeni</th>
-                        <th></th>
                         </thead>
                         <c:forEach items="${rezervacije}" var="rezervacija">
                             <tr>
