@@ -10,25 +10,44 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                
-                <c:if test="${not empty loggedInUser}">
-                    <span class="nav-link"><c:out value="Poeni: ${sessionScope.loggedInUser.getPoeni()}" /></span>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/rezervacije">Rezervacije</a>
-                    </li>
-                </c:if>
-                    
-                <li class="nav-item">
-                    <a class="nav-link" href="/kontakt.jsp">Kontakt</a>
-                </li>
+
+                <!--                <li class="nav-item">
+                                    <a class="nav-link" href="/kontakt.jsp">Kontakt</a>
+                                </li>-->
 
                 <c:choose>
                     <c:when test="${not empty loggedInUser}">
+
+                        <c:if test="${loggedInUser.getUloga().equals('korisnik')}">
+                            <span class="navbar-text"><c:out value="Poeni: ${sessionScope.loggedInUser.getPoeni()}" /></span>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/rezervacije">Rezervacije</a>
+                            </li>
+                        </c:if>
+
+                        <c:if test="${loggedInUser.getUloga().equals('menadzer')}">
+                            <span class="navbar-text">Menadzer</span>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/rezervacije">Vasi hoteli</a>
+                            </li>
+                        </c:if>
+
+                        <c:if test="${loggedInUser.getUloga().equals('admin')}">
+                            <span class="navbar-text" style="text-align: center;">Admin</span>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/klijenti">Klijenti</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/hoteli">Hoteli</a>
+                            </li>
+                        </c:if>
+
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Izloguj se</a>
                         </li>
-                    </c:when>
                         
+                    </c:when>
+
                     <c:otherwise>
                         <li class="nav-item">
                             <a class="nav-link" href="/login">Uloguj se</a>
@@ -38,7 +57,7 @@
                         </li>
                     </c:otherwise>   
                 </c:choose>   
-                        
+
             </ul>
         </div>
     </div>
