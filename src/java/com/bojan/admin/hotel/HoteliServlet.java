@@ -53,6 +53,6 @@ public class HoteliServlet extends HttpServlet {
             request.getSession().setAttribute("hoteli", hoteli);
         }
 
-        request.getRequestDispatcher("/admin/hoteli.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/hoteli/hoteli.jsp").forward(request, response);
     }
 }

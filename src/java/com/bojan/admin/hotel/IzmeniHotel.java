@@ -48,7 +48,7 @@ public class IzmeniHotel extends HttpServlet {
             request.getSession().setAttribute("hotel_za_izmenu", h);
         }
 
-        request.getRequestDispatcher("/admin/izmenihotel.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/hoteli/izmenihotel.jsp").forward(request, response);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class IzmeniHotel extends HttpServlet {
             throws ServletException, IOException {
 
         if (request.getParameter("btn").equals("cancel")) {
-            response.sendRedirect("/admin/hoteli.jsp");
+            response.sendRedirect("/admin/hoteli");
         } else {
             Connection kon = ConnectionProvider.getCon();
             PreparedStatement ps;
