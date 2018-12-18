@@ -49,6 +49,6 @@ public class KlijentiServlet extends HttpServlet {
         }
 
         request.getSession().setAttribute("klijenti", klijenti);
-        request.getRequestDispatcher("/admin/klijenti.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/klijenti/klijenti.jsp").forward(request, response);
     }
 }

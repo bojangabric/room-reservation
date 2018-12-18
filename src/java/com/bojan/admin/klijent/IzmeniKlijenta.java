@@ -50,7 +50,7 @@ public class IzmeniKlijenta extends HttpServlet {
             request.getSession().setAttribute("klijent_za_izmenu", k);
         }
 
-        request.getRequestDispatcher("/admin/izmeniklijenta.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/klijenti/izmeniklijenta.jsp").forward(request, response);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class IzmeniKlijenta extends HttpServlet {
             throws ServletException, IOException {
 
         if (request.getParameter("btn").equals("cancel")) {
-            response.sendRedirect("/admin/klijenti.jsp");
+            response.sendRedirect("/admin/klijenti/klijenti.jsp");
         } else {
             Connection kon = ConnectionProvider.getCon();
             PreparedStatement ps;

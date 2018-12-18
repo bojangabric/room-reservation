@@ -4,7 +4,6 @@ import com.bojan.auth.LoginDAO;
 import com.bojan.baza.ConnectionProvider;
 import com.bojan.models.Korisnik;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
