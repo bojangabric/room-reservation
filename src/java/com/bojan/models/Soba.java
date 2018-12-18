@@ -6,7 +6,18 @@ public class Soba {
     private int hotel_id;
     private int tip_id;
     private int cena;
+    private int poeni;
     private String slika;
+    private String hotel;
+    private String tip;
+
+    public int getPoeni() {
+        return poeni;
+    }
+
+    public void setPoeni(int poeni) {
+        this.poeni = poeni;
+    }
 
     public String getHotel() {
         return hotel;
@@ -23,9 +34,7 @@ public class Soba {
     public void setTip(String tip) {
         this.tip = tip;
     }
-    private String hotel;
-    private String tip;
-    
+
     public String getSlika() {
         return slika;
     }
