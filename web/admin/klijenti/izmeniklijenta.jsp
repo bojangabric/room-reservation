@@ -17,7 +17,7 @@
                     <div class="card">
                         <div class="card-header">Izmena klijenta</div>
                         <div class="card-body">
-                            <form method="POST" action="/IzmeniKlijenta/${klijent_za_izmenu.getKorisnik_id()}" aria-label="Login">
+                            <form method="POST" action="/IzmeniKlijenta/${klijent_za_izmenu.getKorisnik_id()}">
 
                                 <div class="form-group row">
                                     <label for="korisnik_id" class="col-sm-4 col-form-label text-md-right">Korisnik ID</label>
@@ -46,7 +46,7 @@
                                         <input id="ime_prezime" type="text" class="form-control" name="ime_prezime" required autofocus value="${klijent_za_izmenu.getIme_prezime()}">
                                     </div>
                                 </div>
-                                    
+
                                 <div class="form-group row">
                                     <label for="email" class="col-sm-4 col-form-label text-md-right">Email adresa</label>
                                     <div class="col-md-6">
@@ -112,9 +112,11 @@
                                         <button type="submit" name="btn" value="save" class="btn btn-primary">
                                             Sacuvaj
                                         </button>
-                                        <button type="submit" name="btn" value="cancel" class="btn btn-danger">
-                                            Prekini
-                                        </button>
+                                        <a href="/admin/klijenti">
+                                            <button type="button" name="btn" value="cancel" class="btn btn-danger">
+                                                Prekini
+                                            </button>
+                                        </a>
                                     </div>
                                 </div>
                             </form>

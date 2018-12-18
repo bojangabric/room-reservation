@@ -43,12 +43,11 @@
                                 <td class="align-middle">${klijent.getPostanski_broj()}</td>
                                 <td class="align-middle">${klijent.getUloga()}</td>
                                 <td class="align-middle">${klijent.getPoeni()}</td>    
-                                <td alig="center">
+                                <td style="width: 8%;">
                                     <a href="/IzmeniKlijenta/${klijent.getKorisnik_id()}">
                                         <button class="btn btn-success btn-sm">Izmeni</button>
                                     </a>
-                                </td>
-                                <td alig="center">
+                      
                                     <a href="/ObrisiKlijenta/${klijent.getKorisnik_id()}">
                                         <button class="btn btn-danger btn-sm">Obrisi</button>
                                     </a>
