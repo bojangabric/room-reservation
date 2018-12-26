@@ -20,17 +20,24 @@
                             <form method="POST" action="/KreirajSobu">
 
                                 <div class="form-group row">
-                                    <label for="hotel_id" class="col-sm-4 col-form-label text-md-right">Hotel ID</label>
+                                    <label for="hotel_id" class="col-md-4 col-form-label text-md-right">Hotel</label>
                                     <div class="col-md-6">
-                                        <input id="hotel_id" type="text" class="form-control" name="hotel_id" required autofocus>
+                                        <select name="hotel_id" class="form-control" id="hotel_id">
+                                            <c:forEach items="${hoteli}" var="hotel">
+                                                <option value="${hotel.getHotel_id()}">${hotel.getNaziv()}</option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                 </div>
 
-
                                 <div class="form-group row">
-                                    <label for="tip_id" class="col-sm-4 col-form-label text-md-right">Tip ID</label>
+                                    <label for="tip_id" class="col-sm-4 col-form-label text-md-right">Tip</label>
                                     <div class="col-md-6">
-                                        <input id="tip_id" type="text" class="form-control" name="tip_id" required autofocus>
+                                        <select name="tip_id" class="form-control" id="tip_id">
+                                            <c:forEach items="${tipovi}" var="tip">
+                                                <option value="${tip.getTip_id()}">${tip.getTip()}</option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                 </div>
 

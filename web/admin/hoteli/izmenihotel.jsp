@@ -65,7 +65,7 @@
                                 <div class="form-group row">
                                     <label for="zvezdice" class="col-sm-4 col-form-label text-md-right">Zvezdice</label>
                                     <div class="col-md-6">
-                                        <input id="zvezdice" type="text" class="form-control" name="zvezdice" required autofocus value="${hotel_za_izmenu.getZvezdice()}">
+                                        <input id="zvezdice" type="number" class="form-control" name="zvezdice" required autofocus value="${hotel_za_izmenu.getZvezdice()}" min="1" max="5">
                                     </div>
                                 </div>
 

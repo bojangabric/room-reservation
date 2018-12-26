@@ -29,14 +29,36 @@
                                 <div class="form-group row">
                                     <label for="hotel_id" class="col-sm-4 col-form-label text-md-right">Hotel ID</label>
                                     <div class="col-md-6">
-                                        <input id="hotel_id" type="text" class="form-control" name="hotel_id" value="${soba_za_izmenu.getHotel_id()}">
+                                        <select name="hotel_id" class="form-control" id="hotel_id">
+                                            <c:forEach items="${hoteli}" var="hotel">
+                                                <c:choose>
+                                                    <c:when test="${hotel.getHotel_id().equals(soba_za_izmenu.getHotel_id())}">
+                                                        <option selected value="${hotel.getHotel_id()}">${hotel.getNaziv()}</option>
+                                                    </c:when>    
+                                                    <c:otherwise>
+                                                        <option value="${hotel.getHotel_id()}">${hotel.getNaziv()}</option>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="tip_id" class="col-sm-4 col-form-label text-md-right">Tip ID</label>
                                     <div class="col-md-6">
-                                        <input id="tip_id" type="text" class="form-control" name="tip_id" required autofocus value="${soba_za_izmenu.getTip_id()}">
+                                        <select name="tip_id" class="form-control" id="tip_id">
+                                            <c:forEach items="${tipovi}" var="tip">
+                                                <c:choose>
+                                                    <c:when test="${soba_za_izmenu.getTip_id().equals(tip.getTip_id())}">
+                                                        <option selected value="${tip.getTip_id()}">${tip.getTip()}</option>
+                                                    </c:when>    
+                                                    <c:otherwise>
+                                                        <option value="${tip.getTip_id()}">${tip.getTip()}</option>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                 </div>
 
