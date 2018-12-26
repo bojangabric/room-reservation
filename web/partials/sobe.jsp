@@ -2,17 +2,17 @@
 
 <div class="col-lg-9">
     <c:forEach items="${sobe}" var="soba">
-        <div class="card mt-4">
-            <div class="row">
+        <div class="card mt-4 kol4">
+            <div class="row ">
                 <div class="col-lg-4">
-                    <img src="/slike/${soba.getSlika()}" class="w-100">
+                    <img src="/slike/${soba.getSlika()}" class="promeni p-0">
                 </div>
-                <div class="col-lg-8 px-3">
+                <div class="col-lg-8 px-3 soba">
                     <div class="card-block px-3">
                         <h4 class="card-title mt-3">${soba.getTip()}, ${soba.getHotel()}</h4>
                         <p class="card-text mt-3">Opis</p>
 
-                        <span class="prices"><strong>${soba.getCena()}$</strong></span>
+                        <span class="prices"><strong>${soba.getCena()}$ ili ${soba.getPoeni()} poena</strong></span>
                         <input hidden type="text" id="soba_id" value="${soba.getSoba_id()}">
                         <div>
                             Datum dolaska <input type="text" name="datum_dolaska" class="form-control datepick w-25 datum_dolaska" required>

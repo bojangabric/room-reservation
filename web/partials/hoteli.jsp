@@ -2,22 +2,21 @@
 
 <div class="col-lg-9">
     <c:forEach items="${hoteli}" var = "hotel">
-        <div class="card mt-4">
-            <div class="row">
-                <div class="col-lg-4">
-                    <img src="/slike/${hotel.getSlika()}"
-                         class="w-100">
+        <div class="card mt-4 kol4">
+            <div class="row ">
+                <div class="col-lg-4 pr-0">
+                    <img src="/slike/${hotel.getSlika()}" class="promeni p-0">
                 </div>
-                <div class="col-lg-8 px-3">
+                <div class="col-lg-8 px-3 hotel">
                     <div class="card-block px-3">
                         <h4 class="card-title mt-3">${hotel.getNaziv()}</h4><h6>${hotel.getAdresa()}, ${hotel.getGrad()}</h6>
                         <p class="card-text mt-3">${hotel.getOpis()}</p>
                         <p class="rating">
-                            
+
                             <c:forEach begin="1" end="${hotel.getZvezdice()}">
                                 <i class="fa fa-star"></i>
                             </c:forEach>
-                                
+
                         </p>    
 
                         <form action="hoteli/${hotel.getHotel_id()}">

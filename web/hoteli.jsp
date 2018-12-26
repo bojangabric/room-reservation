@@ -14,7 +14,7 @@
         <div class = "container">
             <div class="row">
                 <div class="col-lg-3 pt-4">
-                    <form action="" method="get">
+                    <form action="" method="get" class="hoteli-forma p-4">
                         <span class="label">Zvezdice</span>
                         <div class="options pb-2 mt-2">
                             <label class="custom-radio"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i

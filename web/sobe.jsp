@@ -14,7 +14,7 @@
         <div class = "container">
             <div class="row">
                 <div class="col-lg-3 pt-4">
-                    <form action="<c:out value="${hotel_id}"/>" method="get">
+                    <form class="sobe-forma p-4" action="<c:out value="${hotel_id}"/>" method="get">
                         <span class="label">Tip sobe</span>
                         <div class="options pb-2 mt-2">         
                             <c:forEach items="${tipovi}" var = "tip">
