@@ -1,10 +1,15 @@
 package com.bojan.admin.sobe;
 
 import com.bojan.baza.ConnectionProvider;
+import com.bojan.baza.Hoteli;
+import com.bojan.baza.TipoviSoba;
+import com.bojan.models.Hotel;
+import com.bojan.models.TipSobe;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +23,10 @@ public class KreirajSobu extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        ArrayList<Hotel> hoteli = Hoteli.UzmiHotele();
+        ArrayList<TipSobe> tipovi = TipoviSoba.UzmiTipove();
+        request.getSession().setAttribute("hoteli", hoteli);
+        request.getSession().setAttribute("tipovi", tipovi);
         request.getRequestDispatcher("/admin/sobe/kreirajsobu.jsp").forward(request, response);
     }
 

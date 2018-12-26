@@ -3,10 +3,13 @@ package com.bojan.admin.sobe;
 import com.bojan.auth.LoginDAO;
 import com.bojan.baza.ConnectionProvider;
 import com.bojan.baza.Sobe;
+import com.bojan.baza.TipoviSoba;
 import com.bojan.models.Korisnik;
 import com.bojan.models.Soba;
+import com.bojan.models.TipSobe;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +27,9 @@ public class IzmeniSobu extends HttpServlet {
         if (korisnik != null && korisnik.getUloga().equals("admin")) {
 
             Soba s = Sobe.UzmiSobu(Integer.parseInt(request.getPathInfo().replace("/", "")));
+            ArrayList<TipSobe> tipovi = TipoviSoba.UzmiTipove();
+            
+            request.getSession().setAttribute("tipovi", tipovi);
             request.getSession().setAttribute("soba_za_izmenu", s);
         }
 
