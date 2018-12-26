@@ -7,13 +7,53 @@ html {
 body {
     padding-top: 54px;
     margin-bottom: 60px;
+    background: url("../slike/bg.jpg");
+    background-size: cover;
+}
+
+.kol4 {
+    border: none;
+    background: url("../slike/bg.jpg");
+}
+
+.promeni {
+    width: 269.33px;
+    height: 244px;
+    border-bottom: 1px solid black;
+    border-top:1px solid black;
+    border-left:1px solid black;    
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.hotel, .soba {
     background: url("../slike/stone.jpg");
+    background-size: cover;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top:1px solid black;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.hoteli-forma, .sobe-forma {    
+    background: url("../slike/stone.jpg");
+    background-size: cover;
+    border: 1px solid black;
+    border-radius: 15px;
 }
 
 @media (min-width: 992px) {
     body {
         padding-top: 56px;
     }
+}
+
+.navbar {
+    right: 25%;
+    left: 25%;
+    border-bottom-left-radius: 80px 80px;
+    border-bottom-right-radius: 80px 80px;
 }
 
 footer {
@@ -151,4 +191,8 @@ footer {
 
 .datepick {
     display: inline !important;
+}
+
+.table {
+    background-image: url('../slike/stone.jpg');
 }

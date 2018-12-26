@@ -2,8 +2,9 @@
 <%@ page session="true" %>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-        <a class="navbar-brand ml-5" href="/">Hoteli</a>
+    <div class="container">
+        <img class="ml-3" src="/slike/favicon.png" width="25px" height="25px"/>
+        <a class="navbar-brand ml-2" href="/">Hoteli</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,24 +29,30 @@
                         <c:if test="${loggedInUser.getUloga().equals('menadzer')}">
                             <span class="navbar-text">Menadzer</span>
                             <li class="nav-item">
-                                <a class="nav-link" href="/rezervacije">Vasi hoteli</a>
+                                <a class="nav-link" href="/">Vas hotel</a>
                             </li>
                         </c:if>
 
                         <c:if test="${loggedInUser.getUloga().equals('admin')}">
-                            <span class="navbar-text" style="text-align: center;">Admin</span>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin/klijenti">Klijenti</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin/hoteli">Hoteli</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/sobe">Sobe</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/tipovisoba">Tipovi soba</a>
+                            </li>
                         </c:if>
 
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Izloguj se</a>
                         </li>
-                        
+
                     </c:when>
 
                     <c:otherwise>
