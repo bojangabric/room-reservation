@@ -46,7 +46,7 @@ public class Sobe {
         PreparedStatement ps;
         try {
 
-            ps = kon.prepareStatement("SELECT s.soba_id, s.hotel_id, s.tip_id, s.cena, s.slika, h.naziv, ts.tip FROM sobe s "
+            ps = kon.prepareStatement("SELECT s.soba_id, s.hotel_id, s.tip_id, s.cena, s.poeni, s.slika, h.naziv, ts.tip FROM sobe s "
                     + "join hoteli h on h.hotel_id = s.hotel_id "
                     + "join tipovi_soba ts on ts.tip_id = s.tip_id "
                     + "where s.hotel_id = ?");
@@ -63,6 +63,8 @@ public class Sobe {
                 s.setSlika(rs.getString("slika"));
                 s.setTip(rs.getString("tip"));
                 s.setHotel(rs.getString("naziv"));
+                s.setPoeni(rs.getInt("poeni"));
+
                 sobe.add(s);
             }
 
@@ -79,7 +81,7 @@ public class Sobe {
         PreparedStatement ps;
         try {
 
-            ps = kon.prepareStatement("SELECT s.soba_id, s.hotel_id, s.tip_id, s.cena, s.slika, h.naziv, ts.tip FROM sobe s "
+            ps = kon.prepareStatement("SELECT s.soba_id, s.hotel_id, s.tip_id, s.cena, s.slika, s.poeni, h.naziv, ts.tip FROM sobe s "
                     + "join hoteli h on h.hotel_id = s.hotel_id "
                     + "join tipovi_soba ts on ts.tip_id = s.tip_id "
                     + "where s.hotel_id = ? and s.cena >= ? and s.cena <= ?");
@@ -99,6 +101,8 @@ public class Sobe {
                 s.setSlika(rs.getString("slika"));
                 s.setTip(rs.getString("tip"));
                 s.setHotel(rs.getString("naziv"));
+                s.setPoeni(rs.getInt("poeni"));
+
                 sobe.add(s);
             }
 
@@ -160,12 +164,16 @@ public class Sobe {
     public static int UzmiNajmanjuCenu(int hotel_id) {
 
         Comparator<Soba> comp = Comparator.comparing(Soba::getCena);
-        return Collections.min(Sobe.UzmiSobe(hotel_id), comp).getCena();
+        ArrayList<Soba> sobe = Sobe.UzmiSobe(hotel_id);
+
+        return sobe.isEmpty() ? 0 : Collections.min(sobe, comp).getCena();
     }
 
     public static int UzmiNajvecuCenu(int hotel_id) {
 
         Comparator<Soba> comp = Comparator.comparing(Soba::getCena);
-        return Collections.max(Sobe.UzmiSobe(hotel_id), comp).getCena();
+        ArrayList<Soba> sobe = Sobe.UzmiSobe(hotel_id);
+
+        return sobe.isEmpty() ? 0 : Collections.max(sobe, comp).getCena();
     }
 }
