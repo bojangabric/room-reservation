@@ -13,7 +13,8 @@ public class SobeServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        // TODO: Allow to choose type of room
         int min_cena = 0;
         int max_cena = 500;
         if (request.getParameter("min_cena") != null) {
