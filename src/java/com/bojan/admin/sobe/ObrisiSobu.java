@@ -22,7 +22,7 @@ public class ObrisiSobu extends HttpServlet {
 
         Korisnik korisnik = LoginDAO.loggedIn(request);
 
-        if (korisnik != null && korisnik.getUloga().equals("admin")) {
+        if (korisnik != null && (korisnik.getUloga().equals("admin") || korisnik.getUloga().equals("menadzer"))) {
 
             Connection kon = ConnectionProvider.getCon();
             int soba_id = Integer.parseInt(request.getPathInfo().replace("/", ""));

@@ -24,7 +24,7 @@ public class IzmeniSobu extends HttpServlet {
             throws ServletException, IOException {
 
         Korisnik korisnik = LoginDAO.loggedIn(request);
-        if (korisnik != null && korisnik.getUloga().equals("admin")) {
+        if (korisnik != null && (korisnik.getUloga().equals("admin") || korisnik.getUloga().equals("menadzer"))) {
 
             Soba s = Sobe.UzmiSobu(Integer.parseInt(request.getPathInfo().replace("/", "")));
             ArrayList<TipSobe> tipovi = TipoviSoba.UzmiTipove();

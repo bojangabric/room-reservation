@@ -22,14 +22,18 @@ public class HoteliServlet extends HttpServlet {
 
         Korisnik korisnik = LoginDAO.loggedIn(request);
 
-        if (korisnik != null && korisnik.getUloga().equals("admin")) {
+        if (korisnik != null && (korisnik.getUloga().equals("admin") || korisnik.getUloga().equals("menadzer"))) {
 
             Connection kon = ConnectionProvider.getCon();
             PreparedStatement ps;
             ArrayList<Hotel> hoteli = new ArrayList<>();
 
             try {
-                ps = kon.prepareStatement("SELECT * FROM hoteli");
+                if (korisnik.getUloga().equals("admin")) {
+                    ps = kon.prepareStatement("SELECT * FROM hoteli");
+                } else {
+                    ps = kon.prepareStatement("SELECT * FROM hoteli h JOIN menadzeri m ON m.hotel_id = h.hotel_id WHERE m.korisnik_id = " + korisnik.getKorisnik_id());
+                }
 
                 ResultSet rs = ps.executeQuery();
 

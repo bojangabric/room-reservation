@@ -27,9 +27,14 @@
                         </c:if>
 
                         <c:if test="${loggedInUser.getUloga().equals('menadzer')}">
-                            <span class="navbar-text">Menadzer</span>
                             <li class="nav-item">
-                                <a class="nav-link" href="/">Vas hotel</a>
+                                <a class="nav-link" href="/admin/hoteli">Hotel</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/sobe">Sobe</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/tipovisoba">Tipovi soba</a>
                             </li>
                         </c:if>
 

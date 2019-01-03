@@ -24,11 +24,15 @@
                         <th>Opis</th>
                         <th>Zvezdice</th>
                         <th>Slika</th>
-                        <th style="width: 8%;">
-                            <a href="/KreirajHotel">
-                                <button class="btn btn-primary btn-sm">Novi hotel</button>
-                            </a>
-                        </th>
+
+                        <c:if test="${loggedInUser.getUloga().equals('admin')}">
+                            <th style="width: 8%;">
+                                <a href="/KreirajHotel">
+                                    <button class="btn btn-primary btn-sm">Novi hotel</button>
+                                </a>
+                            </th>
+                        </c:if>
+
                         </thead>
                         <c:forEach items="${hoteli}" var="hotel">
                             <tr>
@@ -40,14 +44,24 @@
                                 <td class="align-middle">${hotel.getOpis()}</td>
                                 <td class="align-middle">${hotel.getZvezdice()}</td>
                                 <td class="align-middle">${hotel.getSlika()}</td> 
-                                <td  style="width: 8%;">
-                                    <a href="/IzmeniHotel/${hotel.getHotel_id()}">
-                                        <button class="btn btn-success btn-sm">Izmeni</button>
-                                    </a>
-                                    <a href="/ObrisiHotel/${hotel.getHotel_id()}">
-                                        <button class="btn btn-danger btn-sm">Obrisi</button>
-                                    </a>
-                                </td>
+                                <c:if test="${loggedInUser.getUloga().equals('admin')}">
+                                    <td  style="width: 8%;">
+                                        <a href="/IzmeniHotel/${hotel.getHotel_id()}">
+                                            <button class="btn btn-success btn-sm">Izmeni</button>
+                                        </a>
+                                        <a href="/ObrisiHotel/${hotel.getHotel_id()}">
+                                            <button class="btn btn-danger btn-sm">Obrisi</button>
+                                        </a>
+                                    </td>
+                                </c:if>
+
+                                <c:if test="${loggedInUser.getUloga().equals('menadzer')}">
+                                    <td  style="width: 4%;">
+                                        <a href="/IzmeniHotel/${hotel.getHotel_id()}">
+                                            <button class="btn btn-success btn-sm">Izmeni</button>
+                                        </a>
+                                    </td>
+                                </c:if>
                             </tr>
                         </c:forEach>
                     </table>

@@ -22,7 +22,7 @@ public class TipoviSobaServlet extends HttpServlet {
         Korisnik korisnik = LoginDAO.loggedIn(request);
         ArrayList<TipSobe> tipovi;
 
-        if (korisnik != null && korisnik.getUloga().equals("admin")) {
+        if (korisnik != null && (korisnik.getUloga().equals("admin") || korisnik.getUloga().equals("menadzer"))) {
             tipovi = TipoviSoba.UzmiTipove();
             request.getSession().setAttribute("tipovi", tipovi);
         }

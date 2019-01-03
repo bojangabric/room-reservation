@@ -23,7 +23,7 @@ public class IzmeniTip extends HttpServlet {
             throws ServletException, IOException {
 
         Korisnik korisnik = LoginDAO.loggedIn(request);
-        if (korisnik != null && korisnik.getUloga().equals("admin")) {
+        if (korisnik != null && (korisnik.getUloga().equals("admin") || korisnik.getUloga().equals("menadzer"))) {
 
             TipSobe s = TipoviSoba.UzmiTip(Integer.parseInt(request.getPathInfo().replace("/", "")));
             request.getSession().setAttribute("tip_za_izmenu", s);
