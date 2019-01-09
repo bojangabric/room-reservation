@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2018 at 08:40 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.11
+-- Generation Time: Jan 09, 2019 at 12:58 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,9 +44,17 @@ CREATE TABLE `hoteli` (
 --
 
 INSERT INTO `hoteli` (`hotel_id`, `naziv`, `adresa`, `grad`, `drzava`, `opis`, `zvezdice`, `slika`) VALUES
-(1, 'Hyatt', 'Milentija Popovica 5', 'Beograd', 'Srbija', 'Hotel sa 5 zvezdica.', 5, 'hyatt.jpg'),
-(2, 'Putnik', 'Ilije Ognjanovica 24', 'Novi Sad', 'Srbija', 'Hotel sa 3 zvezdice.', 3, 'putnik.jpg'),
-(3, 'New City', 'Vozda Karadjordja 12', 'Nis', 'Srbija', 'Hotel sa 4 zvezdice.', 4, 'new_city.jpg');
+(5, 'Hyatt', 'Milentija Popovica 5', 'Beograd', 'Srbija', 'Hotel sa 5 zvezdica.', 5, 'hyatt.jpg'),
+(6, 'Putnik', 'Ilije Ognjanovica 24', 'Novi Sad', 'Srbija', 'Hotel sa 3 zvezdice.', 3, 'putnik.jpg'),
+(7, 'New City', 'Vozda Karadjordja 12', 'Nis', 'Srbija', 'Hotel sa 4 zvezdice.', 4, 'new_city.jpg');
+
+--
+-- Triggers `hoteli`
+--
+DELIMITER $$
+CREATE TRIGGER `izbrisi_sobe` BEFORE DELETE ON `hoteli` FOR EACH ROW DELETE FROM sobe WHERE sobe.hotel_id = old.hotel_id
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -74,8 +82,34 @@ CREATE TABLE `korisnici` (
 --
 
 INSERT INTO `korisnici` (`korisnik_id`, `korisnicko_ime`, `lozinka`, `ime_prezime`, `email`, `telefon`, `adresa`, `grad`, `drzava`, `postanski_broj`, `uloga`, `poeni`) VALUES
-(1, 'korisnickoime', 'lozinka', 'imeprezime', 'email@gmail.com', '04302302', 'Adresa', 'Grad', 'Drzava', 11077, 'korisnik', 100),
-(4, 'imeee', 'lozinka', 'imeeee', 'tixizako@sandcars.net', '0123212', 'Adresa', 'Grad', 'Drzav', 10101, 'korisnik', 0);
+(1, 'korisnickoime', 'lozinka', 'imeprezime', 'email@gmail.com', '04302302', 'Adresa', 'Grad', 'Drzava', 11077, 'admin', 100),
+(8, 'imemmeme', 'lozinka', 'adsadsads dsadsa', 'email@menadzer.com', '0123212', 'Adresa', 'Grad', 'Srbija', 10101, 'menadzer', 0);
+
+--
+-- Triggers `korisnici`
+--
+DELIMITER $$
+CREATE TRIGGER `izbrisi_rezervacije_korisnici` BEFORE DELETE ON `korisnici` FOR EACH ROW DELETE FROM rezervacije WHERE rezervacije.korisnik_id = old.korisnik_id
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menadzeri`
+--
+
+CREATE TABLE `menadzeri` (
+  `korisnik_id` int(5) NOT NULL,
+  `hotel_id` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `menadzeri`
+--
+
+INSERT INTO `menadzeri` (`korisnik_id`, `hotel_id`) VALUES
+(8, 5);
 
 -- --------------------------------------------------------
 
@@ -92,6 +126,13 @@ CREATE TABLE `rezervacije` (
   `novac` int(5) NOT NULL,
   `poeni` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rezervacije`
+--
+
+INSERT INTO `rezervacije` (`rezervacija_id`, `korisnik_id`, `soba_id`, `datum_dolaska`, `datum_odlaska`, `novac`, `poeni`) VALUES
+(2, 8, 6, '2018-12-22', '2018-12-29', 150, 0);
 
 -- --------------------------------------------------------
 
@@ -113,10 +154,20 @@ CREATE TABLE `sobe` (
 --
 
 INSERT INTO `sobe` (`soba_id`, `hotel_id`, `tip_id`, `cena`, `poeni`, `slika`) VALUES
-(1, 1, 4, 100, 0, 'apartman.jpg'),
-(2, 3, 2, 50, 0, 'standard.jpg'),
-(3, 2, 3, 33, 0, 'komfort.jpg'),
-(4, 1, 5, 150, 0, 'cetvorokrevetna.jpg');
+(2, 5, 4, 150, 180, 'apartman.jpg'),
+(3, 6, 2, 30, 50, 'standard.jpg'),
+(4, 6, 5, 80, 100, 'cetvorokrevetna.jpg'),
+(5, 7, 1, 25, 50, 'ekonomik.jpg'),
+(6, 7, 3, 50, 75, 'komfort.jpg'),
+(7, 5, 2, 50, 75, 'standard.jpg');
+
+--
+-- Triggers `sobe`
+--
+DELIMITER $$
+CREATE TRIGGER `izbrisi_rezervacije` BEFORE DELETE ON `sobe` FOR EACH ROW DELETE FROM rezervacije WHERE rezervacije.soba_id = old.soba_id
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -189,25 +240,25 @@ ALTER TABLE `tipovi_soba`
 -- AUTO_INCREMENT for table `hoteli`
 --
 ALTER TABLE `hoteli`
-  MODIFY `hotel_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `hotel_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `korisnici`
 --
 ALTER TABLE `korisnici`
-  MODIFY `korisnik_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `korisnik_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `rezervacije`
 --
 ALTER TABLE `rezervacije`
-  MODIFY `rezervacija_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `rezervacija_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sobe`
 --
 ALTER TABLE `sobe`
-  MODIFY `soba_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `soba_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tipovi_soba`
