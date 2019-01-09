@@ -1,6 +1,13 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <div class="col-lg-9">
+    <c:if test="${not empty result}">
+        <div class="mt-3 alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${result}
+        </div>
+    </c:if>
     <c:forEach items="${sobe}" var="soba">
         <div class="card mt-4 kol4">
             <div class="row ">
@@ -9,10 +16,11 @@
                 </div>
                 <div class="col-lg-8 px-3 soba">
                     <div class="card-block px-3">
+                        <span hidden class="hotel_id">${soba.getHotel_id()}</span>
                         <h4 class="card-title mt-3">${soba.getTip()}, ${soba.getHotel()}</h4>
                         <p class="card-text mt-3">Opis</p>
 
-                        <span class="prices"><strong>${soba.getCena()}$ ili ${soba.getPoeni()} poena</strong></span>
+                        <span class="price"><strong><span class="cena">${soba.getCena()}</span>$ ili <span class="poeni">${soba.getPoeni()}</span> poena</strong></span>
                         <input hidden type="text" id="soba_id" value="${soba.getSoba_id()}">
                         <div>
                             Datum dolaska <input type="text" name="datum_dolaska" class="form-control datepick w-25 datum_dolaska" required>
@@ -24,7 +32,6 @@
                                 Rezervisi
                             </button>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -78,7 +85,11 @@
                     <div class="form-group">
                         Do: <input type="text" class="form-control datepick" id="datum_odlaska_modal" name="datum_odlaska_modal" readonly >
                     </div>
+
                     <input hidden type="text" id="soba_id_modal" name="soba_id_modal">
+                    <input hidden type="text" id="soba_cena_modal" name="soba_cena_modal">
+                    <input hidden type="text" id="soba_poeni_modal" name="soba_poeni_modal">
+                    <input hidden type="text" id="hotel_id_modal" name="hotel_id_modal">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Vrati se</button>
@@ -92,6 +103,12 @@
 
 <script>
     $(function () {
+        $.datepicker.setDefaults({beforeShow: function (i) {
+                if ($(i).attr('readonly')) {
+                    return false;
+                }
+            }});
+
         $(".datepick").datepicker({
             dateFormat: "dd-mm-yy",
             changeMonth: true,
@@ -108,6 +125,9 @@
             $("#datum_dolaska_modal").val($(this).parent().parent().find(".datum_dolaska").val());
             $("#datum_odlaska_modal").val($(this).parent().parent().find(".datum_odlaska").val());
             $("#soba_id_modal").val($(this).parent().parent().find("#soba_id").val());
+            $("#soba_cena_modal").val($(this).parent().parent().find(".cena").html());
+            $("#soba_poeni_modal").val($(this).parent().parent().find(".poeni").html());
+            $("#hotel_id_modal").val($(this).parent().parent().find(".hotel_id").html());
         });
     });
 </script>
