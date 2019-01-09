@@ -5,7 +5,6 @@
 
         <title>Sobe - Hoteli</title>
         <%@ include file="partials/metadata.jsp" %>
-
     </head>
     <body>
 
@@ -25,7 +24,7 @@
                             </c:forEach> 
                         </div>
                         <span class="label">Cena</span>
-                        <div class="options mt-2 prices">
+                        <div class="options mt-2 price">
                             <label class="price_label">Min cena: <input class="mb-2 price_range" name="min_cena" type="number" step="50" min="0" max="500" value="0"></label><br>
                             <label class="price_label">Max cena: <input class="mb-3 price_range" name="max_cena" type="number" step="50" min="0" max="500" value="500"></label><br>
                         </div>

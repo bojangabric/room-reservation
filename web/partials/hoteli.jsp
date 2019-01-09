@@ -20,7 +20,7 @@
                         </p>    
 
                         <form action="hoteli/${hotel.getHotel_id()}">
-                            <span class="prices"><strong>${hotel.getMin_cena_sobe()}$ - ${hotel.getMax_cena_sobe()}$</strong></span>
+                            <span class="price"><strong>${hotel.getMin_cena_sobe()}$ - ${hotel.getMax_cena_sobe()}$</strong></span>
                             <button type="submit" class="btn btn-primary btn-show-rooms">Prikazi sobe</button>
                         </form>
 
