@@ -17,7 +17,6 @@ public class SobeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // TODO: Allow to choose type of room
         String tip_sobe = request.getParameter("tip_sobe");
         int min_cena = 0;
         int max_cena = 500;
