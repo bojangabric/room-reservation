@@ -1,7 +1,7 @@
 package com.bojan.admin.klijent;
 
 import com.bojan.baza.ConnectionProvider;
-import com.bojan.models.Korisnik;
+import com.bojan.modeli.Korisnik;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;

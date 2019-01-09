@@ -2,8 +2,8 @@ package com.bojan.admin.tipovisoba;
 
 import com.bojan.auth.LoginDAO;
 import com.bojan.baza.TipoviSoba;
-import com.bojan.models.Korisnik;
-import com.bojan.models.TipSobe;
+import com.bojan.modeli.Korisnik;
+import com.bojan.modeli.TipSobe;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;

@@ -2,7 +2,7 @@ package com.bojan.admin.sobe;
 
 import com.bojan.auth.LoginDAO;
 import com.bojan.baza.ConnectionProvider;
-import com.bojan.models.Korisnik;
+import com.bojan.modeli.Korisnik;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

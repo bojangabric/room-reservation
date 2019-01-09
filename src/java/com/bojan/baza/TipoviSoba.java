@@ -1,6 +1,6 @@
 package com.bojan.baza;
 
-import com.bojan.models.TipSobe;
+import com.bojan.modeli.TipSobe;
 import java.sql.*;
 import java.util.ArrayList;
 

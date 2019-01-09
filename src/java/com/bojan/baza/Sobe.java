@@ -1,6 +1,6 @@
 package com.bojan.baza;
 
-import com.bojan.models.Soba;
+import com.bojan.modeli.Soba;
 import java.sql.*;
 import java.util.*;
 

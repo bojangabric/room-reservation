@@ -1,6 +1,6 @@
 package com.bojan.auth;
 
-import com.bojan.models.Korisnik;
+import com.bojan.modeli.Korisnik;
 import com.bojan.baza.ConnectionProvider;
 import java.sql.*;
 import javax.servlet.http.HttpServletRequest;

@@ -1,6 +1,6 @@
 package com.bojan.auth;
 
-import com.bojan.models.Korisnik;
+import com.bojan.modeli.Korisnik;
 import com.bojan.baza.ConnectionProvider;
 import java.io.IOException;
 import java.sql.*;

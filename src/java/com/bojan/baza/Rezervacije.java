@@ -1,6 +1,6 @@
 package com.bojan.baza;
 
-import com.bojan.models.Rezervacija;
+import com.bojan.modeli.Rezervacija;
 import java.sql.*;
 import java.util.ArrayList;
 

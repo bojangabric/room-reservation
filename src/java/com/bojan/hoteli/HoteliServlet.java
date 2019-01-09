@@ -1,7 +1,7 @@
 package com.bojan.hoteli;
 
 import com.bojan.baza.Hoteli;
-import com.bojan.models.Hotel;
+import com.bojan.modeli.Hotel;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;

@@ -2,8 +2,8 @@ package com.bojan.admin.hotel;
 
 import com.bojan.auth.LoginDAO;
 import com.bojan.baza.ConnectionProvider;
-import com.bojan.models.Hotel;
-import com.bojan.models.Korisnik;
+import com.bojan.modeli.Hotel;
+import com.bojan.modeli.Korisnik;
 import java.io.IOException;
 import java.sql.*;
 import javax.servlet.ServletException;

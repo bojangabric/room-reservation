@@ -1,4 +1,4 @@
-package com.bojan.models;
+package com.bojan.modeli;
 
 import java.util.Date;
 

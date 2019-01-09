@@ -1,6 +1,6 @@
 package com.bojan.baza;
 
-import com.bojan.models.Hotel;
+import com.bojan.modeli.Hotel;
 import java.sql.*;
 import java.util.*;
 

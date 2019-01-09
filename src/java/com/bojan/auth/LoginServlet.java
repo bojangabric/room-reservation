@@ -1,6 +1,6 @@
 package com.bojan.auth;
 
-import com.bojan.models.Korisnik;
+import com.bojan.modeli.Korisnik;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
