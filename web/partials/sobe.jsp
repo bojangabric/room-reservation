@@ -16,7 +16,6 @@
                 </div>
                 <div class="col-lg-8 px-3 soba">
                     <div class="card-block px-3">
-                        <span hidden class="hotel_id">${soba.getHotel_id()}</span>
                         <h4 class="card-title mt-3">${soba.getTip()}, ${soba.getHotel()}</h4>
                         <p class="card-text mt-3">Opis</p>
 
@@ -32,6 +31,7 @@
                                 Rezervisi
                             </button>
                         </div>
+                        <span hidden class="hotel_id">${soba.getHotel_id()}</span>
                     </div>
                 </div>
             </div>
@@ -62,17 +62,17 @@
 
                     <div class="form-group">
                         <label for="broj_kartice">Broj kartice</label>
-                        <input type="text" class="form-control" id="broj_kartice" name="broj_kartice" placeholder="XXXX-XXXX-XXXX-XXXX">
+                        <input required type="text" class="form-control" id="broj_kartice" name="broj_kartice" placeholder="XXXX-XXXX-XXXX-XXXX">
                     </div>
 
                     <div class="row">
                         <div class="form-group col-lg-8">
                             <label for="datum_isteka">Datum isteka</label>
-                            <input type="text" class="form-control" id="datum_isteka" name="datum_isteka" placeholder="MM / YY">
+                            <input required type="text" class="form-control" id="datum_isteka" name="datum_isteka" placeholder="MM / YY">
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="cvv">CVV</label>
-                            <input type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV">
+                            <input required type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV" maxlength="3">
                         </div>
                     </div>
 
@@ -101,33 +101,5 @@
     </div>
 </div>
 
-<script>
-    $(function () {
-        $.datepicker.setDefaults({beforeShow: function (i) {
-                if ($(i).attr('readonly')) {
-                    return false;
-                }
-            }});
-
-        $(".datepick").datepicker({
-            dateFormat: "dd-mm-yy",
-            changeMonth: true,
-            changeYear: true,
-            minDate: 0,
-            maxDate: 365
-        });
-
-        $("input[name='datum_dolaska']").datepicker().datepicker("setDate", "+0");
-        $("input[name='datum_odlaska']").datepicker().datepicker("setDate", "+7");
-
-        $(".btn-rezervisi").on("click", function () {
-            $(".ime_sobe_i_hotela").text($(this).parent().parent().children().html());
-            $("#datum_dolaska_modal").val($(this).parent().parent().find(".datum_dolaska").val());
-            $("#datum_odlaska_modal").val($(this).parent().parent().find(".datum_odlaska").val());
-            $("#soba_id_modal").val($(this).parent().parent().find("#soba_id").val());
-            $("#soba_cena_modal").val($(this).parent().parent().find(".cena").html());
-            $("#soba_poeni_modal").val($(this).parent().parent().find(".poeni").html());
-            $("#hotel_id_modal").val($(this).parent().parent().find(".hotel_id").html());
-        });
-    });
-</script>
+<script src="/js/jquery.inputmask.bundle.js"></script>
+<script src="/js/main.js" ></script>
