@@ -1,7 +1,10 @@
 package com.bojan.sobe;
 
 import com.bojan.baza.Sobe;
+import com.bojan.modeli.Soba;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,8 +16,9 @@ public class SobeServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         // TODO: Allow to choose type of room
+        String tip_sobe = request.getParameter("tip_sobe");
         int min_cena = 0;
         int max_cena = 500;
         if (request.getParameter("min_cena") != null) {
@@ -26,7 +30,19 @@ public class SobeServlet extends HttpServlet {
 
         int hotel_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
 
-        request.setAttribute("sobe", Sobe.UzmiSobe(hotel_id, min_cena, max_cena));
+        ArrayList<Soba> sobe = Sobe.UzmiSobe(hotel_id, min_cena, max_cena);
+
+        if (tip_sobe != null) {
+            Iterator<Soba> iter = sobe.iterator();
+            while (iter.hasNext()) {
+                Soba soba = iter.next();
+
+                if (!soba.getTip().equals(tip_sobe)) {
+                    iter.remove();
+                }
+            }
+        }
+        request.setAttribute("sobe", sobe);
         request.setAttribute("hotel_id", hotel_id);
         request.setAttribute("tipovi", Sobe.UzmiTipove(hotel_id));
         request.getRequestDispatcher("/sobe.jsp").forward(request, response);
