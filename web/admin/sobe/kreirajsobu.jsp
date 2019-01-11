@@ -19,16 +19,29 @@
                         <div class="card-body">
                             <form method="POST" action="/KreirajSobu">
 
-                                <div class="form-group row">
-                                    <label for="hotel_id" class="col-md-4 col-form-label text-md-right">Hotel</label>
-                                    <div class="col-md-6">
-                                        <select name="hotel_id" class="form-control" id="hotel_id">
-                                            <c:forEach items="${hoteli}" var="hotel">
-                                                <option value="${hotel.getHotel_id()}">${hotel.getNaziv()}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                </div>
+                                <c:choose>
+                                    <c:when test="${not empty hotel}">
+                                        <div class="form-group row">
+                                            <label for="hotel_id" class="col-md-4 col-form-label text-md-right">Hotel</label>
+                                            <div class="col-md-6">
+                                                <input name="hotel_id" id="hotel_id" hidden value="${hotel.getHotel_id()}" />
+                                                <option class="form-control" readonly>${hotel.getNaziv()}</option>
+                                            </div>
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise> 
+                                        <div class="form-group row">
+                                            <label for="hotel_id" class="col-md-4 col-form-label text-md-right">Hotel</label>
+                                            <div class="col-md-6">
+                                                <select name="hotel_id" class="form-control" id="hotel_id">
+                                                    <c:forEach items="${hoteli}" var="hotel">
+                                                        <option value="${hotel.getHotel_id()}">${hotel.getNaziv()}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </c:otherwise>
+                                </c:choose>
 
                                 <div class="form-group row">
                                     <label for="tip_id" class="col-sm-4 col-form-label text-md-right">Tip</label>

@@ -20,32 +20,22 @@
                             <form method="POST" action="/IzmeniSobu/${soba_za_izmenu.getSoba_id()}">
 
                                 <div class="form-group row">
-                                    <label for="soba_id" class="col-sm-4 col-form-label text-md-right">Soba ID</label>
+                                    <label for="soba_id" class="col-sm-4 col-form-label text-md-right">Soba</label>
                                     <div class="col-md-6">
                                         <input id="soba_id" type="text" class="form-control" name="soba_id" readonly value="${soba_za_izmenu.getSoba_id()}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="hotel_id" class="col-sm-4 col-form-label text-md-right">Hotel ID</label>
+                                    <label for="hotel_id" class="col-sm-4 col-form-label text-md-right">Hotel</label>
                                     <div class="col-md-6">
-                                        <select name="hotel_id" class="form-control" id="hotel_id">
-                                            <c:forEach items="${hoteli}" var="hotel">
-                                                <c:choose>
-                                                    <c:when test="${hotel.getHotel_id().equals(soba_za_izmenu.getHotel_id())}">
-                                                        <option selected value="${hotel.getHotel_id()}">${hotel.getNaziv()}</option>
-                                                    </c:when>    
-                                                    <c:otherwise>
-                                                        <option value="${hotel.getHotel_id()}">${hotel.getNaziv()}</option>
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </c:forEach>
-                                        </select>
+                                        <input name="hotel_id" id="hotel_id" hidden value="${soba_za_izmenu.getHotel_id()}" />
+                                        <option class="form-control" readonly>${soba_za_izmenu.getHotel()}</option>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="tip_id" class="col-sm-4 col-form-label text-md-right">Tip ID</label>
+                                    <label for="tip_id" class="col-sm-4 col-form-label text-md-right">Tip sobe</label>
                                     <div class="col-md-6">
                                         <select name="tip_id" class="form-control" id="tip_id">
                                             <c:forEach items="${tipovi}" var="tip">
@@ -61,7 +51,6 @@
                                         </select>
                                     </div>
                                 </div>
-
 
                                 <div class="form-group row">
                                     <label for="cena" class="col-sm-4 col-form-label text-md-right">Cena</label>
