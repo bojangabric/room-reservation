@@ -28,10 +28,9 @@ public class KreirajTip extends HttpServlet {
         if (request.getParameter("btn").equals("cancel")) {
             response.sendRedirect("/admin/tipovisoba");
         } else {
-            Connection kon = ConnectionProvider.getCon();
             PreparedStatement ps;
 
-            try {
+            try (Connection kon = ConnectionProvider.getCon()) {
                 ps = kon.prepareStatement("INSERT INTO tipovi_soba(tip) values(?)");
                 ps.setString(1, request.getParameter("tip"));
                 ps.execute();

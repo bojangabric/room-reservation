@@ -8,11 +8,10 @@ public class Rezervacije {
 
     public static ArrayList<Rezervacija> UzmiRezervacije(int korisnik_id) {
 
-        Connection kon = ConnectionProvider.getCon();
         ArrayList<Rezervacija> rezervacije = new ArrayList<>();
 
         PreparedStatement ps;
-        try {
+        try (Connection kon = ConnectionProvider.getCon()) {
 
             ps = kon.prepareStatement("SELECT * FROM rezervacije WHERE korisnik_id = ?");
             ps.setInt(1, korisnik_id);

@@ -7,11 +7,10 @@ public class Gradovi {
 
     public static List<String> UzmiGradove() {
 
-        Connection kon = ConnectionProvider.getCon();
         ArrayList<String> gradovi = new ArrayList<>();
 
         PreparedStatement ps;
-        try {
+        try (Connection kon = ConnectionProvider.getCon()) {
 
             ps = kon.prepareStatement("SELECT DISTINCT grad FROM hoteli");
 

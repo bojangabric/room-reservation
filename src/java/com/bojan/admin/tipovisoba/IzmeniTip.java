@@ -39,10 +39,9 @@ public class IzmeniTip extends HttpServlet {
         if (request.getParameter("btn").equals("cancel")) {
             response.sendRedirect("/admin/tipovisoba");
         } else {
-            Connection kon = ConnectionProvider.getCon();
             PreparedStatement ps;
 
-            try {
+            try (Connection kon = ConnectionProvider.getCon()) {
                 ps = kon.prepareStatement("UPDATE tipovi_soba SET tip = ? WHERE tip_id = ?");
 
                 ps.setString(1, request.getParameter("tip"));

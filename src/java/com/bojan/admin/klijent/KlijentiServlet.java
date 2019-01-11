@@ -18,11 +18,10 @@ public class KlijentiServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        Connection kon = ConnectionProvider.getCon();
         ArrayList<Korisnik> klijenti = new ArrayList<>();
 
         PreparedStatement ps;
-        try {
+        try (Connection kon = ConnectionProvider.getCon()) {
 
             ps = kon.prepareStatement("SELECT * FROM korisnici");
             ResultSet rs = ps.executeQuery();

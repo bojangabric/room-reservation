@@ -23,10 +23,9 @@ public class IzmeniHotel extends HttpServlet {
 
         if (korisnik != null && (korisnik.getUloga().equals("admin") || korisnik.getUloga().equals("menadzer"))) {
  
-            Connection kon = ConnectionProvider.getCon();
             int hotel_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
             Hotel h = new Hotel();
-            try {
+            try (Connection kon = ConnectionProvider.getCon()) {
                 PreparedStatement ps = kon.prepareStatement("SELECT * FROM hoteli WHERE hotel_id = ?");
                 ps.setInt(1, hotel_id);
 
@@ -58,10 +57,9 @@ public class IzmeniHotel extends HttpServlet {
         if (request.getParameter("btn").equals("cancel")) {
             response.sendRedirect("/admin/hoteli");
         } else {
-            Connection kon = ConnectionProvider.getCon();
             PreparedStatement ps;
 
-            try {
+            try (Connection kon = ConnectionProvider.getCon()) {
                 ps = kon.prepareStatement("UPDATE hoteli SET naziv = ?, adresa = ?, grad = ?, "
                         + "drzava = ?, opis = ?, zvezdice = ?, slika = ? "
                         + "WHERE hotel_id = ?");

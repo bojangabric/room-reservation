@@ -41,11 +41,10 @@ public class RezervacijeServlet extends HttpServlet {
 
             SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
 
-            Connection kon = ConnectionProvider.getCon();
             PreparedStatement ps;
 
             db_call:
-            try {
+            try (Connection kon = ConnectionProvider.getCon()){
                 ps = kon.prepareStatement("INSERT INTO rezervacije(korisnik_id, soba_id, datum_dolaska, datum_odlaska, novac, poeni) VALUES(?, ?, ?, ?, ?, ?)");
                 ps.setInt(1, k.getKorisnik_id());
                 ps.setInt(2, Integer.parseInt(request.getParameter("soba_id_modal")));

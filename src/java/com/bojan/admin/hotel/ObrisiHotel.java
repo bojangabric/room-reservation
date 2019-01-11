@@ -24,9 +24,8 @@ public class ObrisiHotel extends HttpServlet {
 
         if (korisnik != null && korisnik.getUloga().equals("admin")) {
 
-            Connection kon = ConnectionProvider.getCon();
             int hotel_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
-            try {
+            try (Connection kon = ConnectionProvider.getCon()) {
                 PreparedStatement ps = kon.prepareStatement("DELETE FROM hoteli WHERE hotel_id = ?");
                 ps.setInt(1, hotel_id);
                 ps.execute();

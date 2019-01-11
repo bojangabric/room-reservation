@@ -18,7 +18,6 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String redirect = "register.jsp";
-        Connection kon = ConnectionProvider.getCon();
 
         Korisnik novi = new Korisnik();
         novi.setKorisnicko_ime(request.getParameter("korisnicko_ime"));
@@ -31,7 +30,7 @@ public class RegisterServlet extends HttpServlet {
         novi.setDrzava(request.getParameter("drzava"));
         novi.setPostanski_broj(Integer.parseInt(request.getParameter("postanski_broj")));
 
-        try {
+        try (Connection kon = ConnectionProvider.getCon()) {
             PreparedStatement ps = kon.prepareStatement(
                     "INSERT INTO korisnici(korisnicko_ime, lozinka, ime_prezime, email, telefon, adresa, grad, drzava, postanski_broj, uloga, poeni)"
                     + "VALUES(?,?,?,?,?,?,?,?,?,?,?)");

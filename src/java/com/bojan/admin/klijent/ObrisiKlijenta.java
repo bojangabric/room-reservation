@@ -24,9 +24,8 @@ public class ObrisiKlijenta extends HttpServlet {
 
         if (korisnik != null && korisnik.getUloga().equals("admin")) {
 
-            Connection kon = ConnectionProvider.getCon();
             int korisnik_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
-            try {
+            try (Connection kon = ConnectionProvider.getCon()) {
                 PreparedStatement ps = kon.prepareStatement("DELETE FROM korisnici WHERE korisnik_id = ?");
                 ps.setInt(1, korisnik_id);
                 ps.execute();

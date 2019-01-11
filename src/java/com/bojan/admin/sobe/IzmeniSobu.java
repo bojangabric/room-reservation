@@ -28,7 +28,7 @@ public class IzmeniSobu extends HttpServlet {
 
             Soba s = Sobe.UzmiSobu(Integer.parseInt(request.getPathInfo().replace("/", "")));
             ArrayList<TipSobe> tipovi = TipoviSoba.UzmiTipove();
-            
+
             request.getSession().setAttribute("tipovi", tipovi);
             request.getSession().setAttribute("soba_za_izmenu", s);
         }
@@ -43,13 +43,11 @@ public class IzmeniSobu extends HttpServlet {
         if (request.getParameter("btn").equals("cancel")) {
             response.sendRedirect("/admin/sobe");
         } else {
-            Connection kon = ConnectionProvider.getCon();
             PreparedStatement ps;
 
-            try {
+            try (Connection kon = ConnectionProvider.getCon()) {
                 ps = kon.prepareStatement("UPDATE sobe SET hotel_id = ?, tip_id = ?, cena = ?, poeni = ?, slika = ? "
                         + "WHERE soba_id = ?");
-
                 ps.setInt(1, Integer.parseInt(request.getParameter("hotel_id")));
                 ps.setInt(2, Integer.parseInt(request.getParameter("tip_id")));
                 ps.setInt(3, Integer.parseInt(request.getParameter("cena")));
@@ -60,7 +58,7 @@ public class IzmeniSobu extends HttpServlet {
                 ps.executeUpdate();
             } catch (SQLException ex) {
             }
-
+            
             response.sendRedirect("/admin/sobe");
         }
     }

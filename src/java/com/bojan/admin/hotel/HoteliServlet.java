@@ -24,11 +24,10 @@ public class HoteliServlet extends HttpServlet {
 
         if (korisnik != null && (korisnik.getUloga().equals("admin") || korisnik.getUloga().equals("menadzer"))) {
 
-            Connection kon = ConnectionProvider.getCon();
             PreparedStatement ps;
             ArrayList<Hotel> hoteli = new ArrayList<>();
 
-            try {
+            try (Connection kon = ConnectionProvider.getCon()) {
                 if (korisnik.getUloga().equals("admin")) {
                     ps = kon.prepareStatement("SELECT * FROM hoteli");
                 } else {

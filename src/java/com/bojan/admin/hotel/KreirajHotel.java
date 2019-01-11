@@ -26,10 +26,9 @@ public class KreirajHotel extends HttpServlet {
         if (request.getParameter("btn").equals("cancel")) {
             response.sendRedirect("/admin/hoteli");
         } else {
-            Connection kon = ConnectionProvider.getCon();
             PreparedStatement ps;
 
-            try {
+            try (Connection kon = ConnectionProvider.getCon()) {
                 ps = kon.prepareStatement("INSERT INTO hoteli(naziv, adresa, grad, "
                         + "drzava, opis, zvezdice, slika) "
                         + "values(?, ?, ?, ?, ?, ?, ?)");

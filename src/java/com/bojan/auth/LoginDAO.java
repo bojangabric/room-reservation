@@ -9,8 +9,7 @@ public class LoginDAO {
 
     public static boolean validate(Korisnik korisnik) {
         boolean status = false;
-        try {
-            Connection kon = ConnectionProvider.getCon();
+        try (Connection kon = ConnectionProvider.getCon()) {
 
             PreparedStatement ps = kon.prepareStatement(
                     "SELECT * FROM korisnici WHERE email=? AND lozinka=?");

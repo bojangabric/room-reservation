@@ -8,11 +8,10 @@ public class TipoviSoba {
 
     public static ArrayList<TipSobe> UzmiTipove() {
 
-        Connection kon = ConnectionProvider.getCon();
         ArrayList<TipSobe> tipovi = new ArrayList<>();
 
         PreparedStatement ps;
-        try {
+        try (Connection kon = ConnectionProvider.getCon()) {
 
             ps = kon.prepareStatement("SELECT * FROM tipovi_soba");
 
@@ -33,11 +32,10 @@ public class TipoviSoba {
 
     public static TipSobe UzmiTip(int tip_id) {
 
-        Connection kon = ConnectionProvider.getCon();
         PreparedStatement ps;
         TipSobe t = new TipSobe();
 
-        try {
+        try (Connection kon = ConnectionProvider.getCon()) {
 
             ps = kon.prepareStatement("SELECT * FROM tipovi_soba WHERE tip_id = ?");
             ps.setInt(1, tip_id);

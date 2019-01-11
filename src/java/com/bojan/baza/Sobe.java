@@ -8,11 +8,10 @@ public class Sobe {
 
     public static ArrayList<Soba> UzmiSobe() {
 
-        Connection kon = ConnectionProvider.getCon();
         ArrayList<Soba> sobe = new ArrayList<>();
 
         PreparedStatement ps;
-        try {
+        try (Connection kon = ConnectionProvider.getCon()) {
 
             ps = kon.prepareStatement("SELECT s.soba_id, s.hotel_id, s.tip_id, s.cena, s.slika, s.poeni, h.naziv, ts.tip FROM sobe s "
                     + "join hoteli h on h.hotel_id = s.hotel_id "
@@ -40,11 +39,10 @@ public class Sobe {
 
     public static ArrayList<Soba> UzmiSobe(int hotel_id) {
 
-        Connection kon = ConnectionProvider.getCon();
         ArrayList<Soba> sobe = new ArrayList<>();
 
         PreparedStatement ps;
-        try {
+        try (Connection kon = ConnectionProvider.getCon()) {
 
             ps = kon.prepareStatement("SELECT s.soba_id, s.hotel_id, s.tip_id, s.cena, s.poeni, s.slika, h.naziv, ts.tip FROM sobe s "
                     + "join hoteli h on h.hotel_id = s.hotel_id "
@@ -75,11 +73,10 @@ public class Sobe {
 
     public static ArrayList<Soba> UzmiSobe(int hotel_id, int min_cena, int max_cena) {
 
-        Connection kon = ConnectionProvider.getCon();
         ArrayList<Soba> sobe = new ArrayList<>();
 
         PreparedStatement ps;
-        try {
+        try (Connection kon = ConnectionProvider.getCon()) {
 
             ps = kon.prepareStatement("SELECT s.soba_id, s.hotel_id, s.tip_id, s.cena, s.slika, s.poeni, h.naziv, ts.tip FROM sobe s "
                     + "join hoteli h on h.hotel_id = s.hotel_id "
@@ -113,11 +110,11 @@ public class Sobe {
 
     public static Soba UzmiSobu(int soba_id) {
 
-        Connection kon = ConnectionProvider.getCon();
         Soba s = new Soba();
 
-        try {
-            PreparedStatement ps = kon.prepareStatement("SELECT * FROM sobe WHERE soba_id = ?");
+        try (Connection kon = ConnectionProvider.getCon()) {
+            PreparedStatement ps = kon.prepareStatement("SELECT * FROM sobe s "
+                    + "join hoteli h on h.hotel_id = s.hotel_id WHERE s.soba_id = ?");
             ps.setInt(1, soba_id);
 
             ResultSet rs = ps.executeQuery();
@@ -129,7 +126,8 @@ public class Sobe {
             s.setCena(rs.getInt("cena"));
             s.setPoeni(rs.getInt("poeni"));
             s.setSlika(rs.getString("slika"));
-
+            s.setHotel(rs.getString("naziv"));
+            
         } catch (SQLException ex) {
         }
 
@@ -138,11 +136,10 @@ public class Sobe {
 
     public static ArrayList<String> UzmiTipove(int hotel_id) {
 
-        Connection kon = ConnectionProvider.getCon();
         ArrayList<String> tipovi = new ArrayList<>();
 
         PreparedStatement ps;
-        try {
+        try (Connection kon = ConnectionProvider.getCon()) {
 
             ps = kon.prepareStatement("SELECT tip FROM tipovi_soba t "
                     + "JOIN sobe s on s.tip_id = t.tip_id "

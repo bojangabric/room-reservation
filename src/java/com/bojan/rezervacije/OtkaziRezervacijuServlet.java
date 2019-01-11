@@ -17,13 +17,12 @@ public class OtkaziRezervacijuServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         Korisnik korisnik = LoginDAO.loggedIn(request);
 
         if (korisnik != null) {
-            Connection kon = ConnectionProvider.getCon();
             int rezervacija_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
-            try {
+            try (Connection kon = ConnectionProvider.getCon()) {
 
                 PreparedStatement ps = kon.prepareStatement("DELETE FROM rezervacije WHERE rezervacija_id = ? AND korisnik_id = ?");
                 ps.setInt(1, rezervacija_id);

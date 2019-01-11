@@ -24,9 +24,8 @@ public class ObrisiSobu extends HttpServlet {
 
         if (korisnik != null && (korisnik.getUloga().equals("admin") || korisnik.getUloga().equals("menadzer"))) {
 
-            Connection kon = ConnectionProvider.getCon();
             int soba_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
-            try {
+            try (Connection kon = ConnectionProvider.getCon()) {
                 PreparedStatement ps = kon.prepareStatement("DELETE FROM sobe WHERE soba_id = ?");
                 ps.setInt(1, soba_id);
                 ps.execute();
