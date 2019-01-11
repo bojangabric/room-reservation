@@ -8,11 +8,10 @@ public class Hoteli {
 
     public static ArrayList<Hotel> UzmiHotele() {
 
-        Connection kon = ConnectionProvider.getCon();
         ArrayList<Hotel> hoteli = new ArrayList<>();
 
         PreparedStatement ps;
-        try {
+        try (Connection kon = ConnectionProvider.getCon()) {
 
             ps = kon.prepareStatement("SELECT * FROM hoteli");
 
@@ -39,11 +38,10 @@ public class Hoteli {
 
     public static ArrayList<Hotel> UzmiHotele(String query) {
 
-        Connection kon = ConnectionProvider.getCon();
         ArrayList<Hotel> hoteli = new ArrayList<>();
 
         PreparedStatement ps;
-        try {
+        try (Connection kon = ConnectionProvider.getCon()) {
 
             ps = kon.prepareStatement(query);
 
@@ -69,5 +67,33 @@ public class Hoteli {
         }
 
         return hoteli;
+    }
+
+    public static Hotel UzmiHotel(int korisnik_id) {
+
+        Hotel h = new Hotel();
+
+        PreparedStatement ps;
+        try (Connection kon = ConnectionProvider.getCon()) {
+
+            ps = kon.prepareStatement("SELECT * FROM hoteli h JOIN menadzeri m ON h.hotel_id = m.hotel_id WHERE m.korisnik_id = ?");
+            ps.setInt(1, korisnik_id);
+            
+            ResultSet rs = ps.executeQuery();
+
+            rs.next();
+            h.setHotel_id(rs.getInt("hotel_id"));
+            h.setNaziv(rs.getString("naziv"));
+            h.setAdresa(rs.getString("adresa"));
+            h.setGrad(rs.getString("grad"));
+            h.setDrzava(rs.getString("drzava"));
+            h.setOpis(rs.getString("opis"));
+            h.setZvezdice(rs.getInt("zvezdice"));
+            h.setSlika(rs.getString("slika"));
+
+        } catch (SQLException ex) {
+        }
+
+        return h;
     }
 }
