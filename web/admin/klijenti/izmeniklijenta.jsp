@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 
 <html>
     <head>
@@ -92,10 +93,29 @@
                                 <div class="form-group row">
                                     <label for="uloga" class="col-md-4 col-form-label text-md-right">Uloga</label>
                                     <div class="col-md-6">
-                                        <select name="uloga" class="form-control" id="uloga">
-                                            <option value="korisnik">Korisnik</option>
-                                            <option value="menadzer">Menadzer</option>
-                                            <option value="admin">Admin</option>
+                                        <c:set var="uloge" value="korisnik,menadzer,admin" scope="application" />
+                                        <select class="form-control" name="uloga" id="uloga">
+                                            <c:forEach items="${fn:split(uloge, ',')}" var="uloga">
+                                                <option value="${uloga}" ${klijent_za_izmenu.uloga.equals(uloga) ? 'selected' : ''}>${uloga}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row hoteli">
+                                    <label for="hotel_id" class="col-sm-4 col-form-label text-md-right">Hotel</label>
+                                    <div class="col-md-6">
+                                        <select name="hotel_id" class="form-control" id="hotel_id">
+                                            <c:forEach items="${hoteli}" var="hotel">
+                                                <c:choose>
+                                                    <c:when test="${hotel.getHotel_id().equals(menadzerov_hotel)}">
+                                                        <option selected value="${hotel.getHotel_id()}">${hotel.getNaziv()}</option>
+                                                    </c:when>    
+                                                    <c:otherwise>
+                                                        <option value="${hotel.getHotel_id()}">${hotel.getNaziv()}</option>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
@@ -129,4 +149,20 @@
         <%@include file="/partials/footer.jsp" %>
 
     </body>
+    <script>
+        $(function () {
+            
+            if ($("#uloga").val() !== "menadzer") {
+                $(".hoteli").attr("hidden", "");
+            }
+            
+            $("#uloga").change(function () {
+                if ($("#uloga").find(":selected").text() === "menadzer")
+                    $(".hoteli").removeAttr("hidden");
+                else
+                    $(".hoteli").attr("hidden", "");
+            });
+        });
+
+    </script>
 </html>
