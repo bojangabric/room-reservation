@@ -1,15 +1,14 @@
 package com.bojan.admin.sobe;
 
+import com.bojan.auth.LoginDAO;
 import com.bojan.baza.ConnectionProvider;
 import com.bojan.baza.Hoteli;
 import com.bojan.baza.TipoviSoba;
-import com.bojan.modeli.Hotel;
-import com.bojan.modeli.TipSobe;
+import com.bojan.modeli.Korisnik;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,10 +22,16 @@ public class KreirajSobu extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ArrayList<Hotel> hoteli = Hoteli.UzmiHotele();
-        ArrayList<TipSobe> tipovi = TipoviSoba.UzmiTipove();
-        request.getSession().setAttribute("hoteli", hoteli);
-        request.getSession().setAttribute("tipovi", tipovi);
+        Korisnik k = LoginDAO.loggedIn(request);
+        
+        if (k.getUloga().equals("menadzer")) {
+            request.getSession().setAttribute("hotel", Hoteli.UzmiHotel(k.getKorisnik_id()));
+        } else {
+            request.getSession().setAttribute("hoteli", Hoteli.UzmiHotele());
+        }
+
+        request.getSession().setAttribute("tipovi", TipoviSoba.UzmiTipove());
+
         request.getRequestDispatcher("/admin/sobe/kreirajsobu.jsp").forward(request, response);
     }
 
@@ -37,10 +42,9 @@ public class KreirajSobu extends HttpServlet {
         if (request.getParameter("btn").equals("cancel")) {
             response.sendRedirect("/admin/sobe");
         } else {
-            Connection kon = ConnectionProvider.getCon();
             PreparedStatement ps;
 
-            try {
+            try (Connection kon = ConnectionProvider.getCon()) {
                 ps = kon.prepareStatement("INSERT INTO sobe(hotel_id, tip_id, cena, poeni, slika) "
                         + "values(?, ?, ?, ?, ?)");
 
