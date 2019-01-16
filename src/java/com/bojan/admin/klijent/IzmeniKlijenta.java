@@ -2,9 +2,12 @@ package com.bojan.admin.klijent;
 
 import com.bojan.auth.LoginDAO;
 import com.bojan.baza.ConnectionProvider;
+import com.bojan.baza.Hoteli;
+import com.bojan.modeli.Hotel;
 import com.bojan.modeli.Korisnik;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +24,9 @@ public class IzmeniKlijenta extends HttpServlet {
         Korisnik korisnik = LoginDAO.loggedIn(request);
 
         if (korisnik != null && korisnik.getUloga().equals("admin")) {
+
+            ArrayList<Hotel> hoteli = Hoteli.UzmiHotele();
+            int menadzerov_hotel = 0;
 
             Connection kon = ConnectionProvider.getCon();
             int korisnik_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
@@ -44,9 +50,13 @@ public class IzmeniKlijenta extends HttpServlet {
                 k.setPostanski_broj(rs.getInt("postanski_broj"));
                 k.setUloga(rs.getString("uloga"));
                 k.setPoeni(rs.getInt("poeni"));
+                
+                menadzerov_hotel = Hoteli.UzmiHotel(rs.getInt("korisnik_id")).getHotel_id();
             } catch (SQLException ex) {
             }
 
+            request.getSession().setAttribute("menadzerov_hotel", menadzerov_hotel);
+            request.getSession().setAttribute("hoteli", hoteli);
             request.getSession().setAttribute("klijent_za_izmenu", k);
         }
 
