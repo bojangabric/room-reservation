@@ -18,13 +18,14 @@ public class LoginServlet extends HttpServlet {
         Korisnik user = new Korisnik();
         user.setEmail(request.getParameter("email"));
         user.setLozinka(request.getParameter("lozinka"));
-        String redirect = "/login";
 
         if (LoginDAO.validate(user)) {
             request.getSession().setAttribute("loggedInUser", user);
-            redirect = "/hoteli";
+            response.sendRedirect("/hoteli");
+        } else {
+            request.setAttribute("error", "Nije ispravan email ili sifra.");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
-        response.sendRedirect(redirect);
     }
 
     @Override

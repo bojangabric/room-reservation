@@ -32,7 +32,14 @@
                                         <input id="password" type="password" class="form-control" name="lozinka" required>
                                     </div>
                                 </div>
-
+                                
+                                <c:if test="${not empty error}">
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        ${error}
+                                    </div>
+                                </c:if>
+                                
                                 <div class="form-group row">
                                     <div class="col-md-6 offset-md-4">
                                         <div class="checkbox">
