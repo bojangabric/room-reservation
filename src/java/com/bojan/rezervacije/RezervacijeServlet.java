@@ -82,7 +82,7 @@ public class RezervacijeServlet extends HttpServlet {
             if (valid) {
                 response.sendRedirect(request.getRequestURI());
             } else {
-                request.setAttribute("result", "Nemate dovoljno poena.");
+                request.setAttribute("error", "Nemate dovoljno poena.");
                 request.getRequestDispatcher("/hoteli/" + Integer.parseInt(request.getParameter("hotel_id_modal"))).forward(request, response);
             }
         } else {
