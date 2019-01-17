@@ -32,7 +32,11 @@ public class HoteliServlet extends HttpServlet {
             query += "WHERE zvezdice = " + zvezdice;
         }
 
-        ArrayList<Hotel> hoteli = Hoteli.UzmiHotele(query);      
+        ArrayList<Hotel> hoteli = Hoteli.UzmiHotele(query);
+
+        if (hoteli.isEmpty()) {
+            request.setAttribute("error", "Nema nijednog hotela koji odgovara odabranim opcijama.");
+        }
         
         request.setAttribute("hoteli", hoteli);
         request.getRequestDispatcher("hoteli.jsp").forward(request, response);

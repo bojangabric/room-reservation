@@ -1,6 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="col-lg-9">
+
+    <c:if test="${not empty error}">
+        <div class="mt-4 alert alert-info alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            ${error}
+        </div>
+    </c:if>
+
     <c:forEach items="${hoteli}" var = "hotel">
         <div class="card mt-4 kol4">
             <div class="row ">
@@ -12,16 +20,22 @@
                         <h4 class="card-title mt-3">${hotel.getNaziv()}</h4><h6>${hotel.getAdresa()}, ${hotel.getGrad()}</h6>
                         <p class="card-text mt-3">${hotel.getOpis()}</p>
                         <p class="rating">
-
                             <c:forEach begin="1" end="${hotel.getZvezdice()}">
                                 <i class="fa fa-star"></i>
                             </c:forEach>
-
                         </p>    
 
                         <form action="hoteli/${hotel.getHotel_id()}">
-                            <span class="price"><strong>${hotel.getMin_cena_sobe()}$ - ${hotel.getMax_cena_sobe()}$</strong></span>
-                            <button type="submit" class="btn btn-primary btn-show-rooms">Prikazi sobe</button>
+                            <c:choose>
+                                <c:when test="${hotel.getMin_cena_sobe() > 0 || hotel.getMax_cena_sobe() > 0}">
+                                    <span class="price"><strong>${hotel.getMin_cena_sobe()}$ - ${hotel.getMax_cena_sobe()}$</strong></span>
+                                    <button type="submit" class="btn btn-primary btn-show-rooms">Prikazi sobe</button>
+                                </c:when>
+                                <c:otherwise>
+                                     <span class="price">Trenutno nema soba.</span>
+                                    <button type="button" class="btn btn-primary btn-show-rooms disabled">Prikazi sobe</button>
+                                </c:otherwise>
+                            </c:choose>
                         </form>
 
                     </div>
