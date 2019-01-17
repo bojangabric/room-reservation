@@ -41,6 +41,11 @@ public class SobeServlet extends HttpServlet {
                 }
             }
         }
+
+        if (sobe.isEmpty()) {
+            request.setAttribute("error", "Nema nijedne sobe koja odgovara odabranim opcijama.");
+        }
+
         request.setAttribute("sobe", sobe);
         request.setAttribute("hotel_id", hotel_id);
         request.setAttribute("tipovi", Sobe.UzmiTipove(hotel_id));

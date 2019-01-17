@@ -2,12 +2,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <div class="col-lg-9">
-    <c:if test="${not empty result}">
-        <div class="mt-3 alert alert-danger alert-dismissible">
+    
+    <c:if test="${not empty error}">
+        <div class="mt-4 alert alert-info alert-dismissible">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            ${result}
+            ${error}
         </div>
     </c:if>
+    
     <c:forEach items="${sobe}" var="soba">
         <div class="card mt-4 kol4">
             <div class="row ">
