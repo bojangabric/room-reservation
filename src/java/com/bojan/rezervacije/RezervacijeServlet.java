@@ -44,7 +44,7 @@ public class RezervacijeServlet extends HttpServlet {
             PreparedStatement ps;
 
             db_call:
-            try (Connection kon = ConnectionProvider.getCon()){
+            try (Connection kon = ConnectionProvider.getCon()) {
                 ps = kon.prepareStatement("INSERT INTO rezervacije(korisnik_id, soba_id, datum_dolaska, datum_odlaska, novac, poeni) VALUES(?, ?, ?, ?, ?, ?)");
                 ps.setInt(1, k.getKorisnik_id());
                 ps.setInt(2, Integer.parseInt(request.getParameter("soba_id_modal")));
@@ -60,7 +60,15 @@ public class RezervacijeServlet extends HttpServlet {
                 if (request.getParameter("plati").equals("novac")) {
                     ps.setInt(5, Integer.parseInt(request.getParameter("soba_cena_modal")));
                     ps.setInt(6, 0);
+
+                    PreparedStatement ps2 = kon.prepareStatement("UPDATE korisnici SET poeni = poeni + 10 WHERE korisnik_id = ?");
+                    ps2.setInt(1, k.getKorisnik_id());
+                    ps2.executeUpdate();
+
+                    k.setPoeni(k.getPoeni() + 10);
+                    
                 } else if (k.getPoeni() >= Integer.parseInt(request.getParameter("soba_poeni_modal"))) {
+
                     k.setPoeni(k.getPoeni() - Integer.parseInt(request.getParameter("soba_poeni_modal")));
 
                     PreparedStatement ps2 = kon.prepareStatement("UPDATE korisnici SET poeni = ? WHERE korisnik_id = ?");

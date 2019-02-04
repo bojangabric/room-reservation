@@ -24,11 +24,27 @@ public class OtkaziRezervacijuServlet extends HttpServlet {
             int rezervacija_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
             try (Connection kon = ConnectionProvider.getCon()) {
 
+                PreparedStatement ps2 = kon.prepareStatement("UPDATE korisnici k "
+                        + "JOIN rezervacije r on r.korisnik_id = k.korisnik_id "
+                        + "SET k.poeni = "
+                        + "IF ((SELECT poeni FROM rezervacije r1 WHERE r1.rezervacija_id = ?) > 0, k.poeni + (SELECT poeni FROM rezervacije r1 WHERE r1.rezervacija_id = ?), k.poeni - 10) "
+                        + "WHERE r.rezervacija_id = ? AND k.korisnik_id = ?");
+                ps2.setInt(1, rezervacija_id);
+                ps2.setInt(2, rezervacija_id);
+                ps2.setInt(3, rezervacija_id);
+                ps2.setInt(4, korisnik.getKorisnik_id());
+                ps2.executeUpdate();
+
                 PreparedStatement ps = kon.prepareStatement("DELETE FROM rezervacije WHERE rezervacija_id = ? AND korisnik_id = ?");
                 ps.setInt(1, rezervacija_id);
                 ps.setInt(2, korisnik.getKorisnik_id());
                 ps.executeUpdate();
 
+                PreparedStatement ps3 = kon.prepareStatement("SELECT poeni FROM korisnici WHERE korisnik_id = ?");
+                ps3.setInt(1, korisnik.getKorisnik_id());
+                ResultSet rs = ps3.executeQuery();
+                rs.next();
+                korisnik.setPoeni(rs.getInt("poeni"));
             } catch (SQLException ex) {
             }
         }
