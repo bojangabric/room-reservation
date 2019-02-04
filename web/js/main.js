@@ -17,11 +17,13 @@ $(function () {
         $('[required]').removeAttr('required');
     });
 
-    $.datepicker.setDefaults({beforeShow: function (i) {
+    $.datepicker.setDefaults({
+        beforeShow: function (i) {
             if ($(i).attr('readonly')) {
                 return false;
             }
-        }});
+        }
+    });
 
     $(".datepick").datepicker({
         dateFormat: "dd-mm-yy",
