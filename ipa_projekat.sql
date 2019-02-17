@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jan 16, 2019 at 04:42 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Host: 127.0.0.1
+-- Generation Time: Feb 15, 2019 at 01:11 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,9 +44,9 @@ CREATE TABLE `hoteli` (
 --
 
 INSERT INTO `hoteli` (`hotel_id`, `naziv`, `adresa`, `grad`, `drzava`, `opis`, `zvezdice`, `slika`) VALUES
-(5, 'Hyatt', 'Milentija Popovica 5', 'Beograd', 'Srbija', 'Hotel sa 5 zvezdica.', 5, 'hyatt.jpg'),
-(6, 'Putnik', 'Ilije Ognjanovica 24', 'Novi Sad', 'Srbija', 'Hotel sa 3 zvezdice.', 3, 'putnik.jpg'),
-(7, 'New City', 'Vozda Karadjordja 12', 'Nis', 'Srbijaa', 'Hotel sa 4 zvezdice.', 4, 'new_city.jpg');
+(5, 'Hyatt', 'Milentija Popovica 5', 'Beograd', 'Srbija', 'Jedan od najpopularnijih hotela.', 5, 'hyatt.jpg'),
+(6, 'Putnik', 'Ilije Ognjanovica 24', 'Novi Sad', 'Srbija', 'Hotel sa jeftinim sobama.', 3, 'putnik.jpg'),
+(7, 'New City', 'Vozda Karadjordja 12', 'Nis', 'Srbija', 'Hotel sa 4 zvezdice.', 4, 'new_city.jpg');
 
 --
 -- Triggers `hoteli`
@@ -82,9 +82,9 @@ CREATE TABLE `korisnici` (
 --
 
 INSERT INTO `korisnici` (`korisnik_id`, `korisnicko_ime`, `lozinka`, `ime_prezime`, `email`, `telefon`, `adresa`, `grad`, `drzava`, `postanski_broj`, `uloga`, `poeni`) VALUES
-(1, 'korisnickoime', 'lozinka', 'imeprezime', 'email@gmail.com', '04302302', 'Adresa', 'Grad', 'Drzava', 11077, 'admin', 100),
-(8, 'imemmeme', 'lozinka', 'adsadsads dsadsa', 'email@menadzer.com', '0123212', 'Adresa', 'Grad', 'Srbija', 10101, 'menadzer', 20),
-(9, 'fdajkl;', 'lozinka', 'jafdsl fjkadl', 'novi@menadzer.com', '213321', 'djkjadl', 'djsakl', 'dsajkl', 213321, 'menadzer', 0);
+(1, 'admin', 'lozinka', 'Pavle Pavlovic', 'admin@gmail.com', '0651234567', 'Aksentija Maksimovica', 'Novi Sad', 'Srbija', 11111, 'admin', 0),
+(8, 'menadzer', 'lozinka', 'Marko Markovic', 'menadzer@gmail.com', '0647654321', 'Vozda Karadjordja', 'Nis', 'Srbija', 10101, 'menadzer', 0),
+(9, 'korisnik', 'lozinka', 'Petar Petrovic', 'korisnik@gmail.com', '0639785437', 'Jurija Gagarina', 'Beograd', 'Srbija', 20202, 'korisnik', 1140);
 
 --
 -- Triggers `korisnici`
@@ -129,13 +129,6 @@ CREATE TABLE `rezervacije` (
   `poeni` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `rezervacije`
---
-
-INSERT INTO `rezervacije` (`rezervacija_id`, `korisnik_id`, `soba_id`, `datum_dolaska`, `datum_odlaska`, `novac`, `poeni`) VALUES
-(3, 8, 2, '2019-01-10', '2019-01-17', 0, 180);
-
 -- --------------------------------------------------------
 
 --
@@ -157,13 +150,10 @@ CREATE TABLE `sobe` (
 
 INSERT INTO `sobe` (`soba_id`, `hotel_id`, `tip_id`, `cena`, `poeni`, `slika`) VALUES
 (2, 5, 4, 150, 180, 'apartman.jpg'),
-(3, 6, 2, 1111, 1111, 'xd'),
-(4, 6, 5, 80, 100, 'cetvorokrevetna.jpg'),
-(7, 5, 2, 50, 75, 'standard.jpg'),
-(8, 5, 1, 111, 1112, 'standar.jpg'),
-(9, 5, 1, 50, 80, 'standar.jpg'),
-(10, 7, 2, 100, 80, 'standar.jpg'),
-(11, 7, 3, 100, 80, 'standar.jpg');
+(3, 6, 2, 100, 130, 'apartman.jpg'),
+(4, 6, 5, 80, 110, 'cetvorokrevetna.jpg'),
+(7, 5, 2, 50, 80, 'standard.jpg'),
+(8, 5, 1, 120, 150, 'ekonomik.jpg');
 
 --
 -- Triggers `sobe`
@@ -263,13 +253,13 @@ ALTER TABLE `korisnici`
 -- AUTO_INCREMENT for table `rezervacije`
 --
 ALTER TABLE `rezervacije`
-  MODIFY `rezervacija_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `rezervacija_id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sobe`
 --
 ALTER TABLE `sobe`
-  MODIFY `soba_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `soba_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tipovi_soba`
