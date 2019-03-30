@@ -1,8 +1,8 @@
-package com.bojan.admin.klijent;
+package com.bojan.admin.client;
 
 import com.bojan.auth.LoginDAO;
-import com.bojan.baza.ConnectionProvider;
-import com.bojan.modeli.Korisnik;
+import com.bojan.database.ConnectionProvider;
+import com.bojan.models.User;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,27 +13,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ObrisiKlijenta", urlPatterns = {"/ObrisiKlijenta/*"})
-public class ObrisiKlijenta extends HttpServlet {
+@WebServlet(name = "DeleteClient", urlPatterns = {"/DeleteClient/*"})
+public class DeleteClient extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Korisnik korisnik = LoginDAO.loggedIn(request);
+        User user = LoginDAO.loggedIn(request);
 
-        if (korisnik != null && korisnik.getUloga().equals("admin")) {
+        if (user != null && user.getRole().equals("admin")) {
 
-            int korisnik_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
+            int user_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
             try (Connection kon = ConnectionProvider.getCon()) {
-                PreparedStatement ps = kon.prepareStatement("DELETE FROM korisnici WHERE korisnik_id = ?");
-                ps.setInt(1, korisnik_id);
+                PreparedStatement ps = kon.prepareStatement("DELETE FROM users WHERE user_id = ?");
+                ps.setInt(1, user_id);
                 ps.execute();
             } catch (SQLException ex) {
             }
         }
 
-        response.sendRedirect("/admin/klijenti");
+        response.sendRedirect("/admin/clients");
     }
 
 }
