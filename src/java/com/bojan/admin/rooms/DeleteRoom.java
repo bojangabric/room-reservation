@@ -1,8 +1,8 @@
-package com.bojan.admin.sobe;
+package com.bojan.admin.rooms;
 
 import com.bojan.auth.LoginDAO;
-import com.bojan.baza.ConnectionProvider;
-import com.bojan.modeli.Korisnik;
+import com.bojan.database.ConnectionProvider;
+import com.bojan.models.User;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,27 +13,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ObrisiSobu", urlPatterns = {"/ObrisiSobu/*"})
-public class ObrisiSobu extends HttpServlet {
+@WebServlet(name = "DeleteRoom", urlPatterns = {"/DeleteRoom/*"})
+public class DeleteRoom extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Korisnik korisnik = LoginDAO.loggedIn(request);
+        User user = LoginDAO.loggedIn(request);
 
-        if (korisnik != null && (korisnik.getUloga().equals("admin") || korisnik.getUloga().equals("menadzer"))) {
+        if (user != null && (user.getRole().equals("admin") || user.getRole().equals("manager"))) {
 
-            int soba_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
+            int room_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
             try (Connection kon = ConnectionProvider.getCon()) {
-                PreparedStatement ps = kon.prepareStatement("DELETE FROM sobe WHERE soba_id = ?");
-                ps.setInt(1, soba_id);
+                PreparedStatement ps = kon.prepareStatement("DELETE FROM rooms WHERE room_id = ?");
+                ps.setInt(1, room_id);
                 ps.execute();
             } catch (SQLException ex) {
             }
         }
 
-        response.sendRedirect("/admin/sobe");
+        response.sendRedirect("/admin/rooms");
     }
 
 }
