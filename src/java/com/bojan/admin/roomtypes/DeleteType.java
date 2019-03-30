@@ -1,8 +1,8 @@
-package com.bojan.admin.tipovisoba;
+package com.bojan.admin.roomtypes;
 
 import com.bojan.auth.LoginDAO;
-import com.bojan.baza.ConnectionProvider;
-import com.bojan.modeli.Korisnik;
+import com.bojan.database.ConnectionProvider;
+import com.bojan.models.User;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,27 +13,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ObrisiTip", urlPatterns = {"/ObrisiTip/*"})
-public class ObrisiTip extends HttpServlet {
+@WebServlet(name = "DeleteType", urlPatterns = {"/DeleteType/*"})
+public class DeleteType extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Korisnik korisnik = LoginDAO.loggedIn(request);
+        User user = LoginDAO.loggedIn(request);
 
-        if (korisnik != null && korisnik.getUloga().equals("admin")) {
+        if (user != null && user.getRole().equals("admin")) {
 
-            int tip_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
+            int type_id = Integer.parseInt(request.getPathInfo().replace("/", ""));
             try (Connection kon = ConnectionProvider.getCon()) {
-                PreparedStatement ps = kon.prepareStatement("DELETE FROM tipovi_soba WHERE tip_id = ?");
-                ps.setInt(1, tip_id);
+                PreparedStatement ps = kon.prepareStatement("DELETE FROM room_types WHERE type_id = ?");
+                ps.setInt(1, type_id);
                 ps.execute();
             } catch (SQLException ex) {
             }
         }
 
-        response.sendRedirect("/admin/tipovisoba");
+        response.sendRedirect("/admin/roomtypes");
     }
 
 }
