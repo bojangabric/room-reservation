@@ -3,7 +3,7 @@
 <html>
     <head>
 
-        <title>Izmena hotela - Hoteli</title>   
+        <title>Edit hotel - Hotels</title>   
         <%@ include file="/partials/metadata.jsp" %>
 
     </head>
@@ -15,75 +15,75 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 pt-4">
                     <div class="card">
-                        <div class="card-header">Izmena hotela</div>
+                        <div class="card-header">Edit hotel</div>
                         <div class="card-body">
-                            <form method="POST" action="/IzmeniHotel/${hotel_za_izmenu.getHotel_id()}">
+                            <form method="POST" action="/ChangeHotel/${hotel_for_edit.getHotel_id()}">
 
                                 <div class="form-group row">
                                     <label for="hotel_id" class="col-sm-4 col-form-label text-md-right">Hotel ID</label>
                                     <div class="col-md-6">
-                                        <input id="hotel_id" type="text" class="form-control" name="hotel_id" readonly value="${hotel_za_izmenu.getHotel_id()}">
+                                        <input id="hotel_id" type="text" class="form-control" name="hotel_id" readonly value="${hotel_for_edit.getHotel_id()}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="naziv" class="col-sm-4 col-form-label text-md-right">Naziv</label>
+                                    <label for="name" class="col-sm-4 col-form-label text-md-right">Name</label>
                                     <div class="col-md-6">
-                                        <input id="naziv" type="text" class="form-control" name="naziv" required autofocus value="${hotel_za_izmenu.getNaziv()}">
+                                        <input id="name" type="text" class="form-control" name="name" required autofocus value="${hotel_for_edit.getName()}">
                                     </div>
                                 </div>
 
 
                                 <div class="form-group row">
-                                    <label for="adresa" class="col-sm-4 col-form-label text-md-right">Adresa</label>
+                                    <label for="address" class="col-sm-4 col-form-label text-md-right">Address</label>
                                     <div class="col-md-6">
-                                        <input id="adresa" type="text" class="form-control" name="adresa" required autofocus value="${hotel_za_izmenu.getAdresa()}">
+                                        <input id="address" type="text" class="form-control" name="address" required autofocus value="${hotel_for_edit.getAddress()}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="grad" class="col-sm-4 col-form-label text-md-right">Grad</label>
+                                    <label for="city" class="col-sm-4 col-form-label text-md-right">City</label>
                                     <div class="col-md-6">
-                                        <input id="grad" type="text" class="form-control" name="grad" required autofocus value="${hotel_za_izmenu.getGrad()}">
+                                        <input id="city" type="text" class="form-control" name="city" required autofocus value="${hotel_for_edit.getCity()}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="drzava" class="col-sm-4 col-form-label text-md-right">Drzava</label>
+                                    <label for="country" class="col-sm-4 col-form-label text-md-right">Country</label>
                                     <div class="col-md-6">
-                                        <input id="drzava" type="text" class="form-control" name="drzava" required autofocus value="${hotel_za_izmenu.getDrzava()}">
+                                        <input id="country" type="text" class="form-control" name="country" required autofocus value="${hotel_for_edit.getCountry()}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="opis" class="col-sm-4 col-form-label text-md-right">Opis</label>
+                                    <label for="description" class="col-sm-4 col-form-label text-md-right">Description</label>
                                     <div class="col-md-6">
-                                        <input id="opis" type="text" class="form-control" name="opis" required autofocus value="${hotel_za_izmenu.getOpis()}">
+                                        <input id="description" type="text" class="form-control" name="description" required autofocus value="${hotel_for_edit.getDescription()}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="zvezdice" class="col-sm-4 col-form-label text-md-right">Zvezdice</label>
+                                    <label for="stars" class="col-sm-4 col-form-label text-md-right">Stars</label>
                                     <div class="col-md-6">
-                                        <input id="zvezdice" type="number" class="form-control" name="zvezdice" required autofocus value="${hotel_za_izmenu.getZvezdice()}" min="1" max="5">
+                                        <input id="stars" type="number" class="form-control" name="stars" required autofocus value="${hotel_for_edit.getStars()}" min="1" max="5">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="slika" class="col-sm-4 col-form-label text-md-right">Slika</label>
+                                    <label for="picture" class="col-sm-4 col-form-label text-md-right">Picture</label>
                                     <div class="col-md-6">
-                                        <input id="slika" type="text" class="form-control" name="slika" required autofocus value="${hotel_za_izmenu.getSlika()}">
+                                        <input id="picture" type="text" class="form-control" name="picture" required autofocus value="${hotel_for_edit.getPicture()}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-4">
                                         <button type="submit" name="btn" value="save" class="btn btn-primary">
-                                            Sacuvaj
+                                            Save
                                         </button>
-                                        <a href="/admin/hoteli">
+                                        <a href="/admin/hotels">
                                             <button type="button" name="btn" value="cancel" class="btn btn-danger">
-                                                Prekini
+                                                Cancel
                                             </button>
                                         </a>
                                     </div>

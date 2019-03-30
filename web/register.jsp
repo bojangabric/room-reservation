@@ -3,7 +3,7 @@
 <html>
     <head>
 
-        <title>Register - Hoteli</title>
+        <title>Register - Hotels</title>
         <%@ include file="partials/metadata.jsp" %>
 
     </head>
@@ -21,72 +21,72 @@
                             <form method="POST" action="/register" aria-label="Register">
 
                                 <div class="form-group row">
-                                    <label for="korisnicko_ime" class="col-md-4 col-form-label text-md-right">Korisnicko ime</label>
+                                    <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
                                     <div class="col-md-6">
-                                        <input id="korisnicko_ime" type="text" class="form-control" name="korisnicko_ime" required autofocus>
+                                        <input id="username" type="text" class="form-control" name="username" required autofocus>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="Lozinka" class="col-md-4 col-form-label text-md-right">Lozinka</label>
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                     <div class="col-md-6">
-                                        <input id="lozinka" type="password" class="form-control" name="lozinka" required>
+                                        <input id="password" type="password" class="form-control" name="password" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="ime_prezime" class="col-md-4 col-form-label text-md-right">Ime i prezime</label>
+                                    <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                                     <div class="col-md-6">
-                                        <input id="ime_prezime" type="text" class="form-control" name="ime_prezime" required>
+                                        <input id="name" type="text" class="form-control" name="name" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Adresa</label>  
+                                    <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>  
                                     <div class="col-md-6">
                                         <input id="email" type="email" class="form-control" name="email" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="tel" class="col-md-4 col-form-label text-md-right">Telefon</label>  
+                                    <label for="phone" class="col-md-4 col-form-label text-md-right">Phone</label>  
                                     <div class="col-md-6">
-                                        <input id="telefon" type="tel" class="form-control" name="telefon" required>
+                                        <input id="phone" type="tel" class="form-control" name="phone" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="adresa" class="col-md-4 col-form-label text-md-right">Adresa</label>
+                                    <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
                                     <div class="col-md-6">
-                                        <input id="adresa" type="text" class="form-control" name="adresa" required>
+                                        <input id="address" type="text" class="form-control" name="address" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="grad" class="col-md-4 col-form-label text-md-right">Grad</label>
+                                    <label for="city" class="col-md-4 col-form-label text-md-right">City</label>
                                     <div class="col-md-6">
-                                        <input id="grad" type="text" class="form-control" name="grad" required>
+                                        <input id="city" type="text" class="form-control" name="city" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="drzava" class="col-md-4 col-form-label text-md-right">Drzava</label>
+                                    <label for="country" class="col-md-4 col-form-label text-md-right">Country</label>
                                     <div class="col-md-6">
-                                        <input id="drzava" type="text" class="form-control" name="drzava" required>
+                                        <input id="country" type="text" class="form-control" name="country" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="postanski_broj" class="col-md-4 col-form-label text-md-right">Postanski broj</label>
+                                    <label for="postcode" class="col-md-4 col-form-label text-md-right">Postcode</label>
                                     <div class="col-md-6">
-                                        <input id="postanski_broj" type="text" class="form-control" name="postanski_broj" required>
+                                        <input id="postcode" type="text" class="form-control" name="postcode" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary">
-                                            Registruj se
+                                            Register
                                         </button>
                                     </div>
                                 </div>

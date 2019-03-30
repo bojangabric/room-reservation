@@ -3,7 +3,7 @@
 <html>
     <head>
 
-        <title>Tipovi soba - Hoteli</title>
+        <title>Room types - Hotels</title>
         <%@ include file="/partials/metadata.jsp" %>
 
     </head>
@@ -16,24 +16,24 @@
                 <div class="pt-4">
                     <table class="table table-bordered table-hover" align="center">
                         <thead>
-                        <th>Tip ID</th> 
-                        <th>Tip</th>
+                        <th>Type ID</th> 
+                        <th>Type</th>
                         <th style="width: 8%;">
-                            <a href="/KreirajTip">
-                                <button class="btn btn-primary btn-sm">Novi tip sobe</button>
+                            <a href="/CreateType">
+                                <button class="btn btn-primary btn-sm">New room type</button>
                             </a>
                         </th>
                         </thead>
-                        <c:forEach items="${tipovi}" var="tip">
+                        <c:forEach items="${types}" var="type">
                             <tr>
-                                <td class="align-middle">${tip.getTip_id()}</td>
-                                <td class="align-middle">${tip.getTip()}</td>
+                                <td class="align-middle">${type.getType_id()}</td>
+                                <td class="align-middle">${type.getType()}</td>
                                 <td  style="width: 8%;">
-                                    <a href="/IzmeniTip/${tip.getTip_id()}">
-                                        <button class="btn btn-success btn-sm">Izmeni</button>
+                                    <a href="/ChangeType/${type.getType_id()}">
+                                        <button class="btn btn-success btn-sm">Edit</button>
                                     </a>
-                                    <a href="/ObrisiTip/${tip.getTip_id()}">
-                                        <button class="btn btn-danger btn-sm">Obrisi</button>
+                                    <a href="/DeleteType/${type.getType_id()}">
+                                        <button class="btn btn-danger btn-sm">Delete</button>
                                     </a>
                                 </td>
                             </tr>

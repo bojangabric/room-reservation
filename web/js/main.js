@@ -1,9 +1,9 @@
 $(function () {
-    new Cleave('#broj_kartice', {
+    new Cleave('#card_number', {
         creditCard: true
     });
 
-    new Cleave('#datum_isteka', {
+    new Cleave('#expires_in', {
         date: true,
         datePattern: ['m', 'y']
     });
@@ -13,7 +13,7 @@ $(function () {
         blocks: [3]
     });
 
-    $("button[value=poeni]").on("click", function () {
+    $("button[value=points]").on("click", function () {
         $('[required]').removeAttr('required');
     });
 
@@ -32,17 +32,17 @@ $(function () {
         minDate: 0,
         maxDate: 365
     });
+    
+    $("input[name='arrive_date']").datepicker().datepicker("setDate", "+0");
+    $("input[name='leave_date']").datepicker().datepicker("setDate", "+7");
 
-    $("input[name='datum_dolaska']").datepicker().datepicker("setDate", "+0");
-    $("input[name='datum_odlaska']").datepicker().datepicker("setDate", "+7");
-
-    $(".btn-rezervisi").on("click", function () {
-        $(".ime_sobe_i_hotela").text($(this).parent().parent().children().html());
-        $("#datum_dolaska_modal").val($(this).parent().parent().find(".datum_dolaska").val());
-        $("#datum_odlaska_modal").val($(this).parent().parent().find(".datum_odlaska").val());
-        $("#soba_id_modal").val($(this).parent().parent().find("#soba_id").val());
-        $("#soba_cena_modal").val($(this).parent().parent().find(".cena").html());
-        $("#soba_poeni_modal").val($(this).parent().parent().find(".poeni").html());
+    $(".btn-purchase").on("click", function () {
+        $(".room_hotel_name").text($(this).parent().parent().children().html());
+        $("#arrive_date_modal").val($(this).parent().parent().find(".arrive_date").val());
+        $("#leave_date_modal").val($(this).parent().parent().find(".leave_date").val());
+        $("#room_id_modal").val($(this).parent().parent().find("#room_id").val());
+        $("#room_price_modal").val($(this).parent().parent().find(".price").html());
+        $("#room_points_modal").val($(this).parent().parent().find(".points").html());
         $("#hotel_id_modal").val($(this).parent().parent().find(".hotel_id").html());
     });
 });

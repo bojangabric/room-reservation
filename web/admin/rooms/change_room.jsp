@@ -3,7 +3,7 @@
 <html>
     <head>
 
-        <title>Izmena sobe - Hoteli</title>   
+        <title>Edit room - Hotels</title>   
         <%@ include file="/partials/metadata.jsp" %>
 
     </head>
@@ -15,36 +15,36 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 pt-4">
                     <div class="card">
-                        <div class="card-header">Izmena sobe</div>
+                        <div class="card-header">Edit room</div>
                         <div class="card-body">
-                            <form method="POST" action="/IzmeniSobu/${soba_za_izmenu.getSoba_id()}">
+                            <form method="POST" action="/ChangeROom/${room_for_edit.getRoom_id()}">
 
                                 <div class="form-group row">
-                                    <label for="soba_id" class="col-sm-4 col-form-label text-md-right">Soba</label>
+                                    <label for="room_id" class="col-sm-4 col-form-label text-md-right">Room</label>
                                     <div class="col-md-6">
-                                        <input id="soba_id" type="text" class="form-control" name="soba_id" readonly value="${soba_za_izmenu.getSoba_id()}">
+                                        <input id="room_id" type="text" class="form-control" name="room_id" readonly value="${room_for_edit.getRoom_id()}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="hotel_id" class="col-sm-4 col-form-label text-md-right">Hotel</label>
                                     <div class="col-md-6">
-                                        <input name="hotel_id" id="hotel_id" hidden value="${soba_za_izmenu.getHotel_id()}" />
-                                        <option class="form-control" readonly>${soba_za_izmenu.getHotel()}</option>
+                                        <input name="hotel_id" id="hotel_id" hidden value="${room_for_edit.getHotel_id()}" />
+                                        <option class="form-control" readonly>${room_for_edit.getHotel()}</option>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="tip_id" class="col-sm-4 col-form-label text-md-right">Tip sobe</label>
                                     <div class="col-md-6">
-                                        <select name="tip_id" class="form-control" id="tip_id">
-                                            <c:forEach items="${tipovi}" var="tip">
+                                        <select name="type_id" class="form-control" id="type_id">
+                                            <c:forEach items="${types}" var="type">
                                                 <c:choose>
-                                                    <c:when test="${soba_za_izmenu.getTip_id().equals(tip.getTip_id())}">
-                                                        <option selected value="${tip.getTip_id()}">${tip.getTip()}</option>
+                                                    <c:when test="${room_for_edit.getType_id().equals(tip.getType_id())}">
+                                                        <option selected value="${type.getType_id()}">${type.getType()}</option>
                                                     </c:when>    
                                                     <c:otherwise>
-                                                        <option value="${tip.getTip_id()}">${tip.getTip()}</option>
+                                                        <option value="${type.getType_id()}">${type.getType()}</option>
                                                     </c:otherwise>
                                                 </c:choose>
                                             </c:forEach>
@@ -53,34 +53,34 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="cena" class="col-sm-4 col-form-label text-md-right">Cena</label>
+                                    <label for="price" class="col-sm-4 col-form-label text-md-right">Price</label>
                                     <div class="col-md-6">
-                                        <input id="cena" type="text" class="form-control" name="cena" required autofocus value="${soba_za_izmenu.getCena()}">
+                                        <input id="price" type="text" class="form-control" name="price" required autofocus value="${room_for_edit.getPrice()}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="poeni" class="col-sm-4 col-form-label text-md-right">Poeni</label>
+                                    <label for="points" class="col-sm-4 col-form-label text-md-right">Points</label>
                                     <div class="col-md-6">
-                                        <input id="poeni" type="text" class="form-control" name="poeni" required autofocus value="${soba_za_izmenu.getPoeni()}">
+                                        <input id="points" type="text" class="form-control" name="points" required autofocus value="${room_for_edit.getPoints()}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="slika" class="col-sm-4 col-form-label text-md-right">Slika</label>
+                                    <label for="picture" class="col-sm-4 col-form-label text-md-right">Picture</label>
                                     <div class="col-md-6">
-                                        <input id="slika" type="text" class="form-control" name="slika" required autofocus value="${soba_za_izmenu.getSlika()}">
+                                        <input id="picture" type="text" class="form-control" name="picture" required autofocus value="${room_for_edit.getPicture()}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-4">
                                         <button type="submit" name="btn" value="save" class="btn btn-primary">
-                                            Sacuvaj
+                                            Save
                                         </button>
-                                        <a href="/admin/sobe">
+                                        <a href="/admin/rooms">
                                             <button type="button" name="btn" value="cancel" class="btn btn-danger">
-                                                Prekini
+                                                Cancel
                                             </button>
                                         </a>
                                     </div>

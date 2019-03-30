@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<link rel="shortcut icon" href="/slike/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/pictures/favicon.ico" type="image/x-icon" /> 
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>

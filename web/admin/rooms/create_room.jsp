@@ -3,7 +3,7 @@
 <html>
     <head>
 
-        <title>Kreiranje hotela - Hoteli</title>   
+        <title>Create room - Hotels</title>   
         <%@ include file="/partials/metadata.jsp" %>
 
     </head>
@@ -15,9 +15,9 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 pt-4">
                     <div class="card">
-                        <div class="card-header">Kreiraj sobu</div>
+                        <div class="card-header">New room</div>
                         <div class="card-body">
-                            <form method="POST" action="/KreirajSobu">
+                            <form method="POST" action="/CreateRoom">
 
                                 <c:choose>
                                     <c:when test="${not empty hotel}">
@@ -25,7 +25,7 @@
                                             <label for="hotel_id" class="col-md-4 col-form-label text-md-right">Hotel</label>
                                             <div class="col-md-6">
                                                 <input name="hotel_id" id="hotel_id" hidden value="${hotel.getHotel_id()}" />
-                                                <option class="form-control" readonly>${hotel.getNaziv()}</option>
+                                                <option class="form-control" readonly>${hotel.getName()}</option>
                                             </div>
                                         </div>
                                     </c:when>
@@ -34,8 +34,8 @@
                                             <label for="hotel_id" class="col-md-4 col-form-label text-md-right">Hotel</label>
                                             <div class="col-md-6">
                                                 <select name="hotel_id" class="form-control" id="hotel_id">
-                                                    <c:forEach items="${hoteli}" var="hotel">
-                                                        <option value="${hotel.getHotel_id()}">${hotel.getNaziv()}</option>
+                                                    <c:forEach items="${hotels}" var="hotel">
+                                                        <option value="${hotel.getHotel_id()}">${hotel.getName()}</option>
                                                     </c:forEach>
                                                 </select>
                                             </div>
@@ -44,45 +44,45 @@
                                 </c:choose>
 
                                 <div class="form-group row">
-                                    <label for="tip_id" class="col-sm-4 col-form-label text-md-right">Tip</label>
+                                    <label for="type_id" class="col-sm-4 col-form-label text-md-right">Type</label>
                                     <div class="col-md-6">
-                                        <select name="tip_id" class="form-control" id="tip_id">
-                                            <c:forEach items="${tipovi}" var="tip">
-                                                <option value="${tip.getTip_id()}">${tip.getTip()}</option>
+                                        <select name="type_id" class="form-control" id="type_id">
+                                            <c:forEach items="${types}" var="type">
+                                                <option value="${type.getType_id()}">${type.getType()}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="cena" class="col-sm-4 col-form-label text-md-right">Cena</label>
+                                    <label for="price" class="col-sm-4 col-form-label text-md-right">Price</label>
                                     <div class="col-md-6">
-                                        <input id="cena" type="text" class="form-control" name="cena" required autofocus>
+                                        <input id="price" type="text" class="form-control" name="price" required autofocus>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="poeni" class="col-sm-4 col-form-label text-md-right">Poeni</label>
+                                    <label for="points" class="col-sm-4 col-form-label text-md-right">Points</label>
                                     <div class="col-md-6">
-                                        <input id="poeni" type="text" class="form-control" name="poeni" required autofocus>
+                                        <input id="points" type="text" class="form-control" name="points" required autofocus>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="slika" class="col-sm-4 col-form-label text-md-right">Slika</label>
+                                    <label for="picture" class="col-sm-4 col-form-label text-md-right">Picture</label>
                                     <div class="col-md-6">
-                                        <input id="slika" type="text" class="form-control" name="slika" required autofocus>
+                                        <input id="picture" type="text" class="form-control" name="picture" required autofocus>
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-4">
                                         <button type="submit" name="btn" value="save" class="btn btn-primary">
-                                            Sacuvaj
+                                            Save
                                         </button>
-                                        <a href="/admin/sobe">
+                                        <a href="/admin/rooms">
                                             <button type="button" name="btn" value="cancel" class="btn btn-danger">
-                                                Prekini
+                                                Cancel
                                             </button>
                                         </a>
                                     </div>

@@ -3,8 +3,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <img class="ml-3" src="/slike/favicon.png" width="25px" height="25px"/>
-        <a class="navbar-brand ml-2" href="/">Hoteli</a>
+        <img class="ml-3" src="/pictures/favicon.png" width="25px" height="25px"/>
+        <a class="navbar-brand ml-2" href="/">Hotels</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,60 +12,56 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
 
-                <!--                <li class="nav-item">
-                                    <a class="nav-link" href="/kontakt.jsp">Kontakt</a>
-                                </li>-->
-
                 <c:choose>
                     <c:when test="${not empty loggedInUser}">
 
-                        <c:if test="${loggedInUser.getUloga().equals('korisnik')}">
-                            <span class="navbar-text"><c:out value="Poeni: ${sessionScope.loggedInUser.getPoeni()}" /></span>
+                        <c:if test="${loggedInUser.getRole().equals('client')}">
+                            <span class="navbar-text"><c:out value="Points: ${sessionScope.loggedInUser.getPoints()}" /></span>
                             <li class="nav-item">
-                                <a class="nav-link" href="/rezervacije">Rezervacije</a>
+                                <a class="nav-link" href="/reservations">Reservations</a>
                             </li>
                         </c:if>
 
-                        <c:if test="${loggedInUser.getUloga().equals('menadzer')}">
+                        <c:if test="${loggedInUser.getRole().equals('manager')}">
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/hoteli">Hotel</a>
+                                <a class="nav-link" href="/admin/hotels">Hotel</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/sobe">Sobe</a>
+                                <a class="nav-link" href="/admin/rooms">Rooms</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/tipovisoba">Tipovi soba</a>
+                                <a class="nav-link" href="/admin/roomtypes">Room types</a>
                             </li>
                         </c:if>
 
-                        <c:if test="${loggedInUser.getUloga().equals('admin')}">
-                            
+                        <c:if test="${loggedInUser.getRole().equals('admin')}">
+
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/klijenti">Klijenti</a>
+                                <a class="nav-link" href="/admin/clients">Clients</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/hoteli">Hoteli</a>
+                                <a class="nav-link" href="/admin/hotels">Hotels</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/sobe">Sobe</a>
+                                <a class="nav-link" href="/admin/rooms">Rooms</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/tipovisoba">Tipovi soba</a>
+                                <a class="nav-link" href="/admin/roomtypes">Room types</a>
                             </li>
                         </c:if>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/logout">Izloguj se</a>
+                            <a class="nav-link" href="/logout">Logout</a>
                         </li>
 
                     </c:when>
 
                     <c:otherwise>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login">Uloguj se</a>
+                            <a class="nav-link" href="/login">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/register">Registracija</a>
+                            <a class="nav-link" href="/register">Register</a>
                         </li>
                     </c:otherwise>   
                 </c:choose>   

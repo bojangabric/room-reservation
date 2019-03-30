@@ -9,31 +9,31 @@
         </div>
     </c:if>
 
-    <c:forEach items="${hoteli}" var = "hotel">
+    <c:forEach items="${hotels}" var="hotel">
         <div class="card mt-4 kol4">
             <div class="row ">
                 <div class="col-lg-4 pr-0">
-                    <img src="/slike/${hotel.getSlika()}" class="promeni p-0">
+                    <img src="/pictures/${hotel.getPicture()}" class="picture p-0">
                 </div>
                 <div class="col-lg-8 px-3 hotel">
                     <div class="card-block px-3">
-                        <h4 class="card-title mt-3">${hotel.getNaziv()}</h4><h6>${hotel.getAdresa()}, ${hotel.getGrad()}</h6>
-                        <p class="card-text mt-3">${hotel.getOpis()}</p>
+                        <h4 class="card-title mt-3">${hotel.getName()}</h4><h6>${hotel.getAddress()}, ${hotel.getCity()}</h6>
+                        <p class="card-text mt-3">${hotel.getDescription()}</p>
                         <p class="rating">
-                            <c:forEach begin="1" end="${hotel.getZvezdice()}">
+                            <c:forEach begin="1" end="${hotel.getStars()}">
                                 <i class="fa fa-star"></i>
                             </c:forEach>
                         </p>    
 
-                        <form action="hoteli/${hotel.getHotel_id()}">
+                        <form action="hotels/${hotel.getHotel_id()}">
                             <c:choose>
-                                <c:when test="${hotel.getMin_cena_sobe() > 0 || hotel.getMax_cena_sobe() > 0}">
-                                    <span class="price"><strong>${hotel.getMin_cena_sobe()}$ - ${hotel.getMax_cena_sobe()}$</strong></span>
-                                    <button type="submit" class="btn btn-primary btn-show-rooms">Prikazi sobe</button>
+                                <c:when test="${hotel.getMin_room_price() > 0 || hotel.getMax_room_price() > 0}">
+                                    <span class="price"><strong>${hotel.getMin_room_price()}$ - ${hotel.getMax_room_price()}$</strong></span>
+                                    <button type="submit" class="btn btn-primary btn-show-rooms">Show rooms</button>
                                 </c:when>
                                 <c:otherwise>
-                                     <span class="price">Trenutno nema soba.</span>
-                                    <button type="button" class="btn btn-primary btn-show-rooms disabled">Prikazi sobe</button>
+                                    <span class="price">There are no rooms available.</span>
+                                    <button type="button" class="btn btn-primary btn-show-rooms disabled">Show rooms</button>
                                 </c:otherwise>
                             </c:choose>
                         </form>

@@ -7,16 +7,16 @@ html {
 body {
     padding-top: 54px;
     margin-bottom: 60px;
-    background: url("../slike/bg.jpg");
+    background: url("../pictures/bg.jpg");
     background-size: cover;
 }
 
 .kol4 {
     border: none;
-    background: url("../slike/bg.jpg");
+    background: url("../pictures/bg.jpg");
 }
 
-.promeni {
+.picture {
     width: 269.33px;
     height: 244px;
     border-bottom: 1px solid black;
@@ -26,8 +26,8 @@ body {
     border-top-left-radius: 15px;
 }
 
-.hotel, .soba {
-    background: url("../slike/stone.jpg");
+.hotel, .room {
+    background: url("../pictures/stone.jpg");
     background-size: cover;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
@@ -36,8 +36,8 @@ body {
     border-top-right-radius: 15px;
 }
 
-.hoteli-forma, .sobe-forma {    
-    background: url("../slike/stone.jpg");
+.hotels-form, .rooms-form {    
+    background: url("../pictures/stone.jpg");
     background-size: cover;
     border: 1px solid black;
     border-radius: 15px;
@@ -117,7 +117,7 @@ footer {
     font-size: 15pt;
 }
 
-.price {
+.price-and-points {
     font-size: 25px;
 }
 
@@ -194,5 +194,5 @@ footer {
 }
 
 .table {
-    background-image: url('../slike/stone.jpg');
+    background-image: url('../pictures/stone.jpg');
 }

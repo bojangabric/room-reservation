@@ -3,7 +3,7 @@
 <html>
     <head>
 
-        <title>Login - Hoteli</title>   
+        <title>Login - Hotels</title>   
         <%@ include file="partials/metadata.jsp" %>
 
     </head>
@@ -20,16 +20,16 @@
                             <form method="POST" action="/login" aria-label="Login">
 
                                 <div class="form-group row">
-                                    <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Adresa</label>
+                                    <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Address</label>
                                     <div class="col-md-6">
                                         <input id="email" type="email" class="form-control" name="email" required autofocus>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="lozinka" class="col-md-4 col-form-label text-md-right">Lozinka</label>
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                     <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control" name="lozinka" required>
+                                        <input id="password" type="password" class="form-control" name="password" required>
                                     </div>
                                 </div>
                                 
@@ -44,7 +44,7 @@
                                     <div class="col-md-6 offset-md-4">
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="remember"> Zapamti me
+                                                <input type="checkbox" name="remember">Remember me
                                             </label>
                                         </div>
                                     </div>
@@ -57,7 +57,7 @@
                                         </button>
 
                                         <a class="btn btn-link" href="">
-                                            Zaboravili ste sifru?
+                                            Forgot password?
                                         </a>
                                     </div>
                                 </div>
