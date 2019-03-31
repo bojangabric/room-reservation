@@ -1,6 +1,6 @@
 package com.bojan.auth;
 
-import com.bojan.modeli.Korisnik;
+import com.bojan.models.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,15 +15,15 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Korisnik user = new Korisnik();
+        User user = new User();
         user.setEmail(request.getParameter("email"));
-        user.setLozinka(request.getParameter("lozinka"));
+        user.setPassword(request.getParameter("password"));
 
         if (LoginDAO.validate(user)) {
             request.getSession().setAttribute("loggedInUser", user);
-            response.sendRedirect("/hoteli");
+            response.sendRedirect("/hotels");
         } else {
-            request.setAttribute("error", "Nije ispravan email ili sifra.");
+            request.setAttribute("error", "Wrong email or password.");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }

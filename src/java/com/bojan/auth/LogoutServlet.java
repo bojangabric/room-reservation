@@ -1,6 +1,6 @@
 package com.bojan.auth;
 
-import com.bojan.modeli.Korisnik;
+import com.bojan.models.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,10 +15,10 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        if ((Korisnik) request.getSession().getAttribute("loggedInUser") != null) {
+        if ((User) request.getSession().getAttribute("loggedInUser") != null) {
             request.getSession().invalidate();
         }
 
-        response.sendRedirect("/hoteli");
+        response.sendRedirect("/hotels");
     }
 }

@@ -1,7 +1,7 @@
 package com.bojan.auth;
 
-import com.bojan.modeli.Korisnik;
-import com.bojan.baza.ConnectionProvider;
+import com.bojan.models.User;
+import com.bojan.database.ConnectionProvider;
 import java.io.IOException;
 import java.sql.*;
 import javax.servlet.ServletException;
@@ -19,39 +19,39 @@ public class RegisterServlet extends HttpServlet {
 
         String redirect = "register.jsp";
 
-        Korisnik novi = new Korisnik();
-        novi.setKorisnicko_ime(request.getParameter("korisnicko_ime"));
-        novi.setLozinka(request.getParameter("lozinka"));
-        novi.setIme_prezime(request.getParameter("ime_prezime"));
-        novi.setEmail(request.getParameter("email"));
-        novi.setTelefon(request.getParameter("telefon"));
-        novi.setAdresa(request.getParameter("adresa"));
-        novi.setGrad(request.getParameter("grad"));
-        novi.setDrzava(request.getParameter("drzava"));
-        novi.setPostanski_broj(Integer.parseInt(request.getParameter("postanski_broj")));
+        User new_user = new User();
+        new_user.setUsername(request.getParameter("username"));
+        new_user.setPassword(request.getParameter("password"));
+        new_user.setName(request.getParameter("name"));
+        new_user.setEmail(request.getParameter("email"));
+        new_user.setPhone(request.getParameter("phone"));
+        new_user.setAddress(request.getParameter("address"));
+        new_user.setCity(request.getParameter("city"));
+        new_user.setCountry(request.getParameter("country"));
+        new_user.setPostcode(Integer.parseInt(request.getParameter("postcode")));
 
         try (Connection kon = ConnectionProvider.getCon()) {
             PreparedStatement ps = kon.prepareStatement(
-                    "INSERT INTO korisnici(korisnicko_ime, lozinka, ime_prezime, email, telefon, adresa, grad, drzava, postanski_broj, uloga, poeni)"
+                    "INSERT INTO users(username, password, name, email, phone, address, city, country, country, role, points)"
                     + "VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 
-            ps.setString(1, novi.getKorisnicko_ime());
-            ps.setString(2, novi.getLozinka());
-            ps.setString(3, novi.getIme_prezime());
-            ps.setString(4, novi.getEmail());
-            ps.setString(5, novi.getTelefon());
-            ps.setString(6, novi.getAdresa());
-            ps.setString(7, novi.getGrad());
-            ps.setString(8, novi.getDrzava());
-            ps.setInt(9, novi.getPostanski_broj());
-            ps.setString(10, novi.getUloga());
-            ps.setInt(11, novi.getPoeni());
+            ps.setString(1, new_user.getUsername());
+            ps.setString(2, new_user.getPassword());
+            ps.setString(3, new_user.getName());
+            ps.setString(4, new_user.getEmail());
+            ps.setString(5, new_user.getPhone());
+            ps.setString(6, new_user.getAddress());
+            ps.setString(7, new_user.getCity());
+            ps.setString(8, new_user.getCountry());
+            ps.setInt(9, new_user.getPostcode());
+            ps.setString(10, new_user.getRole());
+            ps.setInt(11, new_user.getPoints());
 
             ps.executeUpdate();
 
-            Korisnik user = new Korisnik();
-            user.setEmail(novi.getEmail());
-            user.setLozinka(novi.getLozinka());
+            User user = new User();
+            user.setEmail(new_user.getEmail());
+            user.setPassword(new_user.getPassword());
 
             if (LoginDAO.validate(user)) {
                 request.getSession().setAttribute("loggedInUser", user);
