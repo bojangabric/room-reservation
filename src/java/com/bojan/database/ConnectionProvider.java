@@ -1,4 +1,4 @@
-package com.bojan.baza;
+package com.bojan.database;
 
 import java.sql.*;
 
