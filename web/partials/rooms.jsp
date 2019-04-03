@@ -3,6 +3,7 @@
 
 <div class="col-lg-9">
     
+
     <c:if test="${not empty error}">
         <div class="mt-4 alert alert-info alert-dismissible">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -11,11 +12,9 @@
     </c:if>
     
     <c:forEach items="${rooms}" var="room">
-        <div class="card mt-4 kol4">
-            <div class="row ">
-                <div class="col-lg-4">
-                    <img src="/pictures/${room.getPicture()}" class="picture p-0">
-                </div>
+        <div class="card mt-4 col4">
+            <div class="row hotel-row">
+                <img src="/pictures/${room.getPicture()}" class="picture p-0">
                 <div class="col-lg-8 px-3 room">
                     <div class="card-block px-3">
                         <h4 class="card-title mt-3">${room.getType()}, ${room.getHotel()}</h4>

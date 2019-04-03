@@ -10,11 +10,9 @@
     </c:if>
 
     <c:forEach items="${hotels}" var="hotel">
-        <div class="card mt-4 kol4">
-            <div class="row ">
-                <div class="col-lg-4 pr-0">
-                    <img src="/pictures/${hotel.getPicture()}" class="picture p-0">
-                </div>
+        <div class="card mt-4">
+            <div class="row hotel-row">
+                <img src="/pictures/${hotel.getPicture()}" class="picture p-0">
                 <div class="col-lg-8 px-3 hotel">
                     <div class="card-block px-3">
                         <h4 class="card-title mt-3">${hotel.getName()}</h4><h6>${hotel.getAddress()}, ${hotel.getCity()}</h6>
@@ -44,5 +42,3 @@
         </div>
     </c:forEach>
 </div>
-
-

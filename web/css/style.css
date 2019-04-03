@@ -7,53 +7,59 @@ html {
 body {
     padding-top: 54px;
     margin-bottom: 60px;
-    background: url("../pictures/bg.jpg");
+    /*    background: #086FA1;*/
+    background:linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(../pictures/bg.jpg);
     background-size: cover;
+
 }
 
-.kol4 {
+.card {
     border: none;
-    background: url("../pictures/bg.jpg");
+    box-shadow: 0px 10px 15px 0px rgb(27,28,32, 0.3);
+}
+
+.card-body {
+    background: #f5f5f5;
+}
+
+.card .card-header {
+    background: #e6e6e6;
+    border-radius: 0;
+    font-weight: bolder;
+}
+
+.card .row.hotel-row{
+    box-shadow: 0px 10px 15px 0px rgb(27,28,32, 0.3);
+    /*border-radius: 15px;*/
+    margin-left: 0px;
+}
+
+.card .row.hotel-row, .hotels-form, .rooms-form {
+    background: #f5f5f5;
 }
 
 .picture {
     width: 269.33px;
     height: 244px;
-    border-bottom: 1px solid black;
-    border-top:1px solid black;
-    border-left:1px solid black;    
-    border-bottom-left-radius: 15px;
-    border-top-left-radius: 15px;
+    /*    border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;*/
 }
 
 .hotel, .room {
-    background: url("../pictures/stone.jpg");
     background-size: cover;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
-    border-top:1px solid black;
-    border-bottom-right-radius: 15px;
-    border-top-right-radius: 15px;
+    /*border-radius: 15px;*/
 }
 
 .hotels-form, .rooms-form {    
-    background: url("../pictures/stone.jpg");
     background-size: cover;
-    border: 1px solid black;
-    border-radius: 15px;
+    /*border-radius: 15px;*/
+    box-shadow: 0px 10px 15px 0px rgb(27,28,32, 0.3);
 }
 
 @media (min-width: 992px) {
     body {
         padding-top: 56px;
     }
-}
-
-.navbar {
-    right: 25%;
-    left: 25%;
-    border-bottom-left-radius: 80px 80px;
-    border-bottom-right-radius: 80px 80px;
 }
 
 footer {
@@ -115,6 +121,7 @@ footer {
 
 .card-text {
     font-size: 15pt;
+    margin-bottom: 5px;
 }
 
 .price-and-points, .price {
@@ -193,6 +200,25 @@ footer {
     display: inline !important;
 }
 
+.arrive_date {
+    margin-top: 10px;
+    margin-left: 35px;
+}
+
+.leave_date {
+    margin-left: 20px;
+}
+
 .table {
-    background-image: url('../pictures/stone.jpg');
+    background: #f5f5f5;
+    box-shadow: 0px 10px 15px 0px rgb(27,28,32, 0.1);
+}
+
+.table thead th {
+    background: #e6e6e6;
+    vertical-align: middle;
+}
+
+a:hover {
+    text-decoration: none;
 }
