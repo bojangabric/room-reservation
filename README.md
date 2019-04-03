@@ -1,5 +1,5 @@
 # Room reservation
-![room-reservation.gif](room-reservation.gif)
+![room-reservation.gif](https://bojangabric.com/images/hotels/hotels.gif)
 Website made for room booking. 
 
 #### Admin
