@@ -14,7 +14,7 @@
         <div class="container col-12">
             <div class="flex-row">
                 <div class="pt-4">
-                    <table class="table table-bordered table-hover" align="center">
+                    <table class="table table-hover" align="center">
                         <thead>
                         <th>User ID</th> 
                         <th>Username</th>
@@ -28,6 +28,7 @@
                         <th>Post code</th>
                         <th>Role</th>
                         <th>Points</th>
+                        <th></th>
                         </thead>
                         <c:forEach items="${clients}" var="client">
                             <tr>

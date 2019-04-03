@@ -10,7 +10,7 @@
         <div class="container">
             <div class="flex-row">
                 <div class="pt-4">
-                    <table class="table table-bordered table-hover" align="center">
+                    <table class="table table-hover" align="center">
                         <thead>
                         <th>Reservation ID</th>
                         <th>User ID</th>
