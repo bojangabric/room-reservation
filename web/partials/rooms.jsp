@@ -96,7 +96,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
                     <button type="submit" name="pay" value="points" class="btn btn-success">Pay with points</button>
-                    <button type="submit" name="pay" value="money" class="btn btn-primary">Pay</button>
+                    <button type="submit" name="pay" value="price" class="btn btn-primary">Pay</button>
                 </div>
             </form>
         </div>

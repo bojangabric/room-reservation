@@ -25,7 +25,7 @@ public class Reservations {
                 r.setRoom_id(rs.getInt("room_id"));
                 r.setArrive_date(rs.getDate("arrive_date"));
                 r.setLeave_date(rs.getDate("leave_date"));
-                r.setMoney(rs.getInt("money"));
+                r.setPrice(rs.getInt("price"));
                 r.setPoints(rs.getInt("points"));
 
                 reservations.add(r);

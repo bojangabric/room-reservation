@@ -9,7 +9,7 @@ public class Reservation {
     private int room_id;
     private Date arrive_date;
     private Date leave_date;
-    private int money;
+    private int price;
     private int points;
 
     public int getReservation_id() {
@@ -52,12 +52,12 @@ public class Reservation {
         this.leave_date = leave_date;
     }
 
-    public int getMoney() {
-        return money;
+    public int getPrice() {
+        return price;
     }
 
-    public void setMoney(int money) {
-        this.money = money;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public int getPoints() {

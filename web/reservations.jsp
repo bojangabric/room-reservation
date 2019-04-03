@@ -17,7 +17,7 @@
                         <th>Room ID</th>
                         <th>Arrive date</th>
                         <th>Leave date</th>
-                        <th>Money</th>
+                        <th>Price</th>
                         <th>Points</th>
                         </thead>
 
@@ -28,7 +28,7 @@
                                 <td class="align-middle">${reservation.getRoom_id()}</td>
                                 <td class="align-middle">${reservation.getArrive_date()}</td>
                                 <td class="align-middle">${reservation.getLeave_date()}</td>
-                                <td class="align-middle">${reservation.getMoney()}</td>
+                                <td class="align-middle">${reservation.getPrice()}</td>
                                 <td class="align-middle">${reservation.getPoints()}</td>
                                 <td alig="center">
                                     <a href="/CancelReservationServlet/${reservation.getReservation_id()}" >

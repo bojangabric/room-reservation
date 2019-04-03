@@ -45,7 +45,7 @@ public class ReservationsServlet extends HttpServlet {
 
             db_call:
             try (Connection kon = ConnectionProvider.getCon()) {
-                ps = kon.prepareStatement("INSERT INTO reservations(user_id, room_id, arrive_date, leave_date, money, points) VALUES(?, ?, ?, ?, ?, ?)");
+                ps = kon.prepareStatement("INSERT INTO reservations(user_id, room_id, arrive_date, leave_date, price, points) VALUES(?, ?, ?, ?, ?, ?)");
                 ps.setInt(1, user.getUser_id());
                 ps.setInt(2, Integer.parseInt(request.getParameter("room_id_modal")));
 
@@ -57,7 +57,7 @@ public class ReservationsServlet extends HttpServlet {
                 time = d.getTime();
                 ps.setDate(4, new java.sql.Date(time));
 
-                if (request.getParameter("pay").equals("money")) {
+                if (request.getParameter("pay").equals("price")) {
                     ps.setInt(5, Integer.parseInt(request.getParameter("room_price_modal")));
                     ps.setInt(6, 0);
 
