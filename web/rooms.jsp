@@ -24,9 +24,15 @@
                             </c:forEach> 
                         </div>
                         <span class="label">Price</span>
-                        <div class="options mt-2 price">
-                            <label class="price_label">Min price: <input class="mb-2 price_range" name="min_price" type="number" step="50" min="0" max="500" value="0"></label><br>
-                            <label class="price_label">Max price: <input class="mb-3 price_range" name="max_price" type="number" step="50" min="0" max="500" value="500"></label><br>
+                        <div class="options price">
+                            <div class="price-wrapper">
+                                <label class="price_label">Min price:</label>
+                                <input class="mb-2 price_range" name="min_price" type="number" step="50" min="0" max="500" value="0">
+                            </div>
+                            <div class="price-wrapper">
+                                <label class="price_label">Max price:</label>
+                                <input class="mb-2 price_range" name="max_price" type="number" step="50" min="0" max="500" value="500">
+                            </div>
                         </div>
                         <button class="btn btn-primary mt-3" type="submit">Search</button>
                     </form>

@@ -56,6 +56,8 @@ body {
     box-shadow: 0px 10px 15px 0px rgb(27,28,32, 0.3);
 }
 
+
+
 @media (min-width: 992px) {
     body {
         padding-top: 56px;
@@ -87,16 +89,28 @@ footer {
     cursor: pointer;
 }
 
-.price_range {
+.price_range { 
     float:right;
-    width: 3em;
-    max-width: 95%;
+    padding: 9px; 
+    border: solid 1px #E5E5E5; 
+    outline: 0; 
+    font-size: 13px; 
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF)); 
+    margin: 0 !important;
 }
 
-.price_label {
-    display: inline-block;
-    width:8em;
+.price-wrapper {
+    margin-bottom: 15px;
 }
+
+.price_range:hover, .price_range:focus { 
+    border-color: #C9C9C9; 
+} 
+
+.price_label {
+    font-size: 20px;
+}
+
 .stars {
     box-sizing: border-box;
     margin: 10px;
