@@ -19,6 +19,7 @@
                         <th>Leave date</th>
                         <th>Price</th>
                         <th>Points</th>
+                        <th></th>
                         </thead>
 
                         <c:forEach items="${reservations}" var="reservation">
